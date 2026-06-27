@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/app.css";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { Route, Switch, Link, useLocation,} from "react-router-dom";
 import {  HomePage } from "./screens/homePage";
@@ -8,7 +7,10 @@ import { OrdersPage } from "./screens/ordersPage";
 import { UserPage } from "./screens/userPage";
 import { HomeNavbar } from "./components/headers/HomeNavbar";
 import { OtherNavbar } from "./components/headers/OtherNavbar";
+import { HelpPage } from "./screens/helpPage";
 import { Footer } from "./components/footer";
+import "../css/app.css";
+import "../css/navbar.css";
 
 function App() {
 
@@ -25,6 +27,9 @@ function App() {
           </Route>
           <Route path="/member-page">
             <UserPage  />
+          </Route>
+          <Route path="/help">
+            <HelpPage  />
           </Route>
           <Route path="/">
             <HomePage />
