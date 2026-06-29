@@ -10,14 +10,10 @@ export default function HomeNavbar() {
         <Stack className="menu">
           <Box>
             <NavLink to="/">
-              <img className="brand-logo"
-                src="/icons/burak.svg"
-              />
+              <img className="brand-logo" src="/icons/burak.svg" />
             </NavLink>
           </Box>
-          <Stack
-           className="links "
-          >
+          <Stack className="links ">
             <Box className={"hover-line"}>
               <NavLink to="/" activeClassName="underline">
                 HOME
@@ -56,19 +52,26 @@ export default function HomeNavbar() {
               </Box>
             ) : (
               <img
-               className="user-avatar"
-              src={"icons/default-user.svg"}
-              aria-haspopup={"true"}/>
+                className="user-avatar"
+                src={"icons/default-user.svg"}
+                aria-haspopup={"true"}
+              />
             )}
           </Stack>
         </Stack>
         <Stack className={"header-frame"}>
           <Stack className={"detail"}>
-            <Box className={"head-main-txt"}>World's The Most Delicius Cousine</Box>
+            <Box className={"head-main-txt"}>
+              World's The Most Delicius Cousine
+            </Box>
             <Box className={"wel-txt"}>The Choice, not just a choice</Box>
             <Box className={"service-txt"}>24 Hours Service</Box>
             <Box className={"signup"}>
-               {!authMember ? (<Button variant={"contained"} className="signup-button">SIGN UP</Button>) : null}
+              {!authMember ? (
+                <Button variant={"contained"} className="signup-button">
+                  SIGN UP
+                </Button>
+              ) : null}
             </Box>
           </Stack>
           <Box className={"logo-frame"}>
