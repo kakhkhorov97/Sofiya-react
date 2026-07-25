@@ -13,7 +13,7 @@ export interface Product {
   productLeftCount: number;
   productSize: ProductSize;
   productVolume: number;
-  productDecs?: string;
+  productDesc?: string;
   productImages: string[];
   productViews: number;
   createdAt: Date;
