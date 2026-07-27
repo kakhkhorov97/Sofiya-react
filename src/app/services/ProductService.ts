@@ -1,5 +1,5 @@
-import axios from "axios";
 import { serverApi } from "../../lib/config";
+import axios from "axios";
 import { Product, ProductInquiry } from "../../lib/types/product";
 
 class ProductService {
