@@ -99,7 +99,7 @@ export default function PopularDishes() {
                           }}
                           noWrap
                         >
-                          {product.productDecs}
+                          {product.productDesc}
                         </Typography>
                       </CardOverflow>
                     </Card>
