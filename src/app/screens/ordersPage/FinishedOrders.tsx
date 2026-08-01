@@ -74,7 +74,7 @@ export default function FinishedOrders() {
         })}
 
         {!finishedOrders ||
-          (pausedOrders.length === 0 && (
+          (finishedOrders.length === 0 && (
             <Box
               display={"flex"}
               flexDirection={"row"}
