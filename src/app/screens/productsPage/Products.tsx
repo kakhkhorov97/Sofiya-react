@@ -13,7 +13,7 @@ import { setProducts } from "./slice";
 import { Product, ProductInquiry } from "../../../lib/types/product";
 import { retrieveProducts } from "./selector";
 import ProductService from "../../services/ProductService";
-import { ProductCollection } from "../../../lib/enums/product.enum";
+import { ProductFormat, ProductGenre } from "../../../lib/enums/product.enum";
 import { useDispatch, useSelector } from "react-redux";
 import { serverApi } from "../../../lib/config";
 import ProductsPage from ".";
@@ -41,17 +41,23 @@ export default function Products(props: ProductsProps) {
     page: 1,
     limit: 8,
     order: "createdAt",
-    productCollection: ProductCollection.DISH,
+    productFormat: undefined,
+    productGenre: undefined,
     search: "",
   });
   const [searchText, setSearchText] = useState<string>("");
+  const [total, setTotal] = useState<number>(0);
   const history = useHistory();
 
   useEffect(() => {
     const product = new ProductService();
+
     product
       .getProducts(productSearch)
-      .then((data) => setProducts(data))
+      .then((data) => {
+        setProducts(data.products);
+        setTotal(data.total);
+      })
       .catch((err) => console.log(err));
   }, [productSearch]);
 
@@ -63,9 +69,15 @@ export default function Products(props: ProductsProps) {
   }, [searchText]);
 
   //* HANDLERS
-  const searchCollectionHandler = (collection: ProductCollection) => {
+  const searchCollectionHandler = (format: ProductFormat) => {
     productSearch.page = 1;
-    productSearch.productCollection = collection;
+    productSearch.productFormat = format;
+    setProductSearch({ ...productSearch });
+  };
+
+  const searchGenreHandler = (genre: ProductGenre) => {
+    productSearch.page = 1;
+    productSearch.productGenre = genre;
     setProductSearch({ ...productSearch });
   };
 
@@ -95,7 +107,7 @@ export default function Products(props: ProductsProps) {
         <Stack flexDirection={"column"} alignItems={"center"}>
           <Stack className={"avatar-big-box"}>
             <Stack className={"top-text"}>
-              <p>Bumarak Restaurant</p>
+              <p></p>
               <Stack className={"single-search-big-box"}>
                 <input
                   type={"search"}
@@ -119,44 +131,23 @@ export default function Products(props: ProductsProps) {
             </Stack>
           </Stack>
 
-          <Stack className={"dishes-filter-section"}>
-            <Stack className={"dishes-filter-box"}>
-              <Button
-                variant={"contained"}
-                color={
-                  productSearch.order === "createdAt" ? "primary" : "secondary"
-                }
-                className={"order"}
-                onClick={() => searchOrderHandler("createdAt")}
-              >
-                New
-              </Button>
-              <Button
-                variant={"contained"}
-                color={
-                  productSearch.order === "productPrice"
-                    ? "primary"
-                    : "secondary"
-                }
-                className={"order"}
-                onClick={() => searchOrderHandler("productPrice")}
-              >
-                Price
-              </Button>
-              <Button
-                variant={"contained"}
-                color={
-                  productSearch.order === "productViews"
-                    ? "primary"
-                    : "secondary"
-                }
-                className={"order"}
-                onClick={() => {
-                  searchOrderHandler("productViews");
-                }}
-              >
-                Views
-              </Button>
+          <Stack className={"genre-filter-section"}>
+            <Stack className={"genre-filter-box"}>
+              {Object.values(ProductGenre).map((genre) => (
+                <Button
+                  key={genre}
+                  variant={"contained"}
+                  color={
+                    productSearch.productGenre === genre
+                      ? "primary"
+                      : "secondary"
+                  }
+                  className={"genre"}
+                  onClick={() => searchGenreHandler(genre)}
+                >
+                  {genre.replace(/_/g, " ")}
+                </Button>
+              ))}
             </Stack>
           </Stack>
 
@@ -166,68 +157,52 @@ export default function Products(props: ProductsProps) {
                 <Button
                   variant={"contained"}
                   color={
-                    productSearch.productCollection === ProductCollection.OTHER
+                    productSearch.productFormat === ProductFormat.AUDIOBOOK
                       ? "primary"
                       : "secondary"
                   }
                   onClick={() =>
-                    searchCollectionHandler(ProductCollection.OTHER)
+                    searchCollectionHandler(ProductFormat.AUDIOBOOK)
                   }
                 >
-                  Other
+                  AUDIOBOOK
                 </Button>
                 <Button
                   variant={"contained"}
                   color={
-                    productSearch.productCollection ===
-                    ProductCollection.DESSERT
+                    productSearch.productFormat === ProductFormat.EBOOK
                       ? "primary"
                       : "secondary"
                   }
-                  onClick={() =>
-                    searchCollectionHandler(ProductCollection.DESSERT)
-                  }
+                  onClick={() => searchCollectionHandler(ProductFormat.EBOOK)}
                 >
-                  Dessert
+                  EBOOK
                 </Button>
                 <Button
                   variant={"contained"}
                   color={
-                    productSearch.productCollection === ProductCollection.DRINK
+                    productSearch.productFormat === ProductFormat.HARDCOVER
                       ? "primary"
                       : "secondary"
                   }
                   onClick={() =>
-                    searchCollectionHandler(ProductCollection.DRINK)
+                    searchCollectionHandler(ProductFormat.HARDCOVER)
                   }
                 >
-                  Drink
+                  HARDCOVER
                 </Button>
                 <Button
                   variant={"contained"}
                   color={
-                    productSearch.productCollection === ProductCollection.SALAD
+                    productSearch.productFormat === ProductFormat.PAPERBACK
                       ? "primary"
                       : "secondary"
                   }
                   onClick={() =>
-                    searchCollectionHandler(ProductCollection.SALAD)
+                    searchCollectionHandler(ProductFormat.PAPERBACK)
                   }
                 >
-                  Salad
-                </Button>
-                <Button
-                  variant={"contained"}
-                  color={
-                    productSearch.productCollection === ProductCollection.DISH
-                      ? "primary"
-                      : "secondary"
-                  }
-                  onClick={() =>
-                    searchCollectionHandler(ProductCollection.DISH)
-                  }
-                >
-                  Dish
+                  PAPERBACK
                 </Button>
               </div>
             </Stack>
@@ -236,10 +211,6 @@ export default function Products(props: ProductsProps) {
               {products.length !== 0 ? (
                 products.map((product: Product) => {
                   const imagePath = `${serverApi}/${product.productImages[0]}`;
-                  const sizeVolume =
-                    product.productCollection === ProductCollection.DRINK
-                      ? product.productVolume + " litre"
-                      : product.productSize + " size";
                   return (
                     <Stack
                       key={product._id}
@@ -250,14 +221,14 @@ export default function Products(props: ProductsProps) {
                         className={"product-img"}
                         sx={{ backgroundImage: `url(${imagePath})` }}
                       >
-                        <div className={"product-sale"}>{sizeVolume}</div>
+                        <div className={"product-sale"}>{}</div>
                         <Button
                           className={"shop-btn"}
                           onClick={(e) => {
                             onAdd({
                               _id: product._id,
                               quantity: 1,
-                              name: product.productName,
+                              name: product.productTitle,
                               price: product.productPrice,
                               image: product.productImages[0],
                             });
@@ -285,7 +256,7 @@ export default function Products(props: ProductsProps) {
                       </Stack>
                       <Box className={"product-desc"}>
                         <span className={"product-title"}>
-                          {product.productName}
+                          {product.productTitle}
                         </span>
                         <div className={"product-desc"}>
                           <MonetizationOnIcon />
@@ -300,14 +271,9 @@ export default function Products(props: ProductsProps) {
               )}
             </Stack>
           </Stack>
-
           <Stack className={"pagination-section"}>
             <Pagination
-              count={
-                products.length !== 0
-                  ? productSearch.page + 1
-                  : productSearch.page
-              }
+              count={Math.ceil(total / productSearch.limit)}
               page={productSearch.page}
               renderItem={(item) => (
                 <PaginationItem

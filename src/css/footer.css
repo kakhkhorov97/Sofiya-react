@@ -1,94 +1,156 @@
-.foot-desc-txt {
-  margin-top: 22px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 34px;
-  color: #e3c08d;
-}
+/* =========================
+   SOFIYA FOOTER
+   ========================= */
 
-.sns-context {
-  margin-top: 17px;
-  width: 137px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.foot-category-title {
-  width: 106px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 34px;
-  color: #c5c8c9;
-}
-
-.foot-category-link {
-  margin-top: 20px;
-  height: 170px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 170px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 34px;
-}
-
-.foot-category-link a {
-  color: #e3c08d;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.find-us {
-  display: flex;
-  flex-direction: row;
-}
-
-.find-us span {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 34px;
-  color: #c5c8c9;
-}
-
-.find-us div {
-  margin-left: 10px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 34px;
-  color: #e3c08d;
-}
-
-.copyright-txt {
-  margin-top: 17px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 34px;
-  color: #e3c08d;
-}
-
-.foot-category-title:after {
-  display: block;
-  content: "";
-  border-bottom: solid 2px #d7b686;
-  transform: scaleX(0);
-  transition: transform 250ms ease-in-out;
-  transform-origin: 0% 50%;
-}
-
-.foot-category-title:hover:after {
-  transform: scaleX(1);
-}
+   .foot-desc-txt {
+    margin-top: 18px;
+  
+    max-width: 420px;
+  
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+  
+    font-size: 14px;
+    line-height: 25px;
+  
+    color: #c5c8c9;
+  }
+  
+  /* SOCIAL MEDIA */
+  
+  .sns-context {
+    margin-top: 20px;
+  
+    width: 130px;
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sns-context a {
+    transition: transform 0.2s ease;
+  }
+  
+  .sns-context a:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* FOOTER CATEGORY TITLE */
+  
+  .foot-category-title {
+    width: auto;
+  
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+  
+    font-size: 18px;
+    line-height: 28px;
+  
+    color: #f8f8ff;
+  }
+  
+  /* CATEGORY LINKS */
+  
+  .foot-category-link {
+    margin-top: 18px;
+  
+    height: 150px;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+  
+    font-size: 14px;
+    line-height: 22px;
+  }
+  
+  .foot-category-link a {
+    color: #d7b686;
+  
+    text-decoration: none;
+    cursor: pointer;
+  
+    transition: color 0.2s ease;
+  }
+  
+  .foot-category-link a:hover {
+    color: #f0d5a5;
+  }
+  
+  /* FIND US */
+  
+  .find-us {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .find-us span {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+  
+    font-size: 14px;
+    line-height: 28px;
+  
+    color: #f8f8ff;
+  }
+  
+  .find-us div {
+    margin-left: 10px;
+  
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+  
+    font-size: 14px;
+    line-height: 28px;
+  
+    color: #d7b686;
+  }
+  
+  /* COPYRIGHT */
+  
+  .copyright-txt {
+    margin-top: 15px;
+  
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+  
+    font-size: 13px;
+    line-height: 22px;
+  
+    color: #999999;
+  }
+  
+  /* TITLE HOVER */
+  
+  .foot-category-title:after {
+    display: block;
+  
+    content: "";
+  
+    width: 35px;
+  
+    margin-top: 4px;
+  
+    border-bottom: solid 2px #d7b686;
+  
+    transform: scaleX(0);
+    transform-origin: 0% 50%;
+  
+    transition: transform 250ms ease-in-out;
+  }
+  
+  .foot-category-title:hover:after {
+    transform: scaleX(1);
+  }

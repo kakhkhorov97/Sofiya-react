@@ -53,7 +53,7 @@ export default function OrdersPage() {
       .catch((err) => console.log(err));
 
     order
-      .getMyOrders({ ...orderInquiry, orderStatus: OrderStatus.FINISH })
+      .getMyOrders({ ...orderInquiry, orderStatus: OrderStatus.DELIVERED })
       .then((data) => setFinishedOrders(data))
       .catch((err) => console.log(err));
   }, [orderInquiry, orderBuilder]);

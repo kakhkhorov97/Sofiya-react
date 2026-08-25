@@ -20,12 +20,13 @@ export default function Footer() {
         <Stack flexDirection={"row"} sx={{ mt: "94px" }}>
           <Stack flexDirection={"column"} style={{ width: "340px" }}>
             <Box>
-              <img width={"100px"} src={"/icons/bumarak.svg"} />
+              <img width={"100px"} src={"/icons/sofiya.png"} />
             </Box>
             <Box className={"foot-desc-txt"}>
-              Focusing on the gourmet Turkish breakfast as well as the youth
-              society, ZEN Bumarak Gurme aims to bring Turkish cuisine back. ZEN
-              Bumarak Gurme creates an illusion with its cuisine.
+              Sofiya is an online bookstore offering a wide selection of books,
+              e-books, and audiobooks for readers of every genre. Discover your
+              next favorite book and enjoy a simple and convenient shopping
+              experience.
             </Box>
             <Box className="sns-context">
               <img src={"/icons/facebook.svg"} />
@@ -56,19 +57,19 @@ export default function Footer() {
                   justifyContent={"space-between"}
                 >
                   <Box flexDirection={"row"} className={"find-us"}>
-                    <span>L.</span>
-                    <div>Downtown, Dubai</div>
+                    <span>1.</span>
+                    <div>Uzbekistan, Andijan</div>
                   </Box>
                   <Box className={"find-us"}>
-                    <span>P.</span>
-                    <div>+971 4 554 7777</div>
+                    <span>2.</span>
+                    <div>+99893 777 77 77</div>
                   </Box>
                   <Box className={"find-us"}>
-                    <span>E.</span>
-                    <div>devexuz@gmail.com</div>
+                    <span>3.</span>
+                    <div>mitpractice1@gmail.com</div>
                   </Box>
                   <Box className={"find-us"}>
-                    <span>H.</span>
+                    <span>4.</span>
                     <div>Visit 24 hours</div>
                   </Box>
                 </Box>
@@ -81,7 +82,7 @@ export default function Footer() {
           sx={{ mt: "80px" }}
         ></Stack>
         <Stack className={"copyright-txt"}>
-          © Copyright Devex Global, All rights reserved.
+          © Copyright Sofiya Bookstore, All rights reserved.
         </Stack>
       </Container>
     </Footers>

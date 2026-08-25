@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { CartItem } from "../../../lib/types/serach";
 import { useGlobals } from "../../hooks/useGlobals";
 import { serverApi } from "../../../lib/config";
@@ -28,6 +28,7 @@ interface HomeNavbarProps {
   handleCloseLogout: () => void;
   handleLogoutRequest: () => void;
 }
+
 export default function HomeNavbar(props: HomeNavbarProps) {
   const {
     cartItems,
@@ -45,35 +46,42 @@ export default function HomeNavbar(props: HomeNavbarProps) {
 
   const { authMember } = useGlobals();
 
-  /** HANDLERS **/
-
   return (
     <div className="home-navbar">
       <Container className="navbar-container">
         <Stack className="menu">
           <Box>
             <NavLink to="/">
-              <img className="brand-logo" src="/icons/bumarak.svg" />
+              <img
+                className="brand-logo"
+                src="/icons/sofiya.svg"
+                alt="Sofiya"
+              />
             </NavLink>
           </Box>
+
+          {/* NAVIGATION */}
           <Stack className="links">
             <Box className={"hover-line"}>
               <NavLink to="/" activeClassName={"underline"}>
                 Home
               </NavLink>
             </Box>
+
             <Box className={"hover-line"}>
               <NavLink to="/products" activeClassName={"underline"}>
-                Products
+                Books
               </NavLink>
             </Box>
+
             {authMember ? (
               <Box className={"hover-line"}>
                 <NavLink to="/orders" activeClassName={"underline"}>
-                  Orders
+                  My Orders
                 </NavLink>
               </Box>
             ) : null}
+
             {authMember ? (
               <Box className={"hover-line"}>
                 <NavLink to="/member-page" activeClassName={"underline"}>
@@ -81,11 +89,14 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                 </NavLink>
               </Box>
             ) : null}
+
             <Box className={"hover-line"}>
               <NavLink to="/help" activeClassName={"underline"}>
                 Help
               </NavLink>
             </Box>
+
+            {/* BASKET */}
             <Basket
               cartItems={cartItems}
               onAdd={onAdd}
@@ -94,6 +105,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
               onDeleteAll={onDeleteAll}
             />
 
+            {/* LOGIN / USER */}
             {!authMember ? (
               <Box>
                 <Button
@@ -114,9 +126,11 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                 }
                 aria-haspopup={"true"}
                 onClick={handleLogoutClick}
+                alt="User"
               />
             )}
 
+            {/* LOGOUT MENU */}
             <Menu
               anchorEl={anchorEl}
               id="account-menu"
@@ -129,12 +143,14 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                   overflow: "visible",
                   filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                   mt: 1.5,
+
                   "& .MuiAvatar-root": {
                     width: 32,
                     height: 32,
                     ml: -0.5,
                     mr: 1,
                   },
+
                   "&:before": {
                     content: '""',
                     display: "block",
@@ -149,8 +165,14 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                   },
                 },
               }}
-              transformOrigin={{ horizontal: "right", vertical: "top" }}
-              anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+              transformOrigin={{
+                horizontal: "right",
+                vertical: "top",
+              }}
+              anchorOrigin={{
+                horizontal: "right",
+                vertical: "bottom",
+              }}
             >
               <MenuItem onClick={handleLogoutRequest}>
                 <ListItemIcon>
@@ -161,13 +183,20 @@ export default function HomeNavbar(props: HomeNavbarProps) {
             </Menu>
           </Stack>
         </Stack>
+
+        {/* HOME HERO SECTION */}
         <Stack className={"header-frame"}>
           <Stack className={"detail"}>
-            <Box className={"head-main-txt"}>
-              World's Most Delicious Cousine
+            <Box className={"head-main-txt"}>Discover Your Next Great Read</Box>
+
+            <Box className={"wel-txt"}>
+              Books for every reader, every story, every journey
             </Box>
-            <Box className={"wel-txt"}>The Choice, not just a choice</Box>
-            <Box className={"service-txt"}>24 hours service</Box>
+
+            <Box className={"service-txt"}>
+              Explore books, e-books & audiobooks
+            </Box>
+
             <Box className={"signup"}>
               {!authMember ? (
                 <Button
@@ -175,11 +204,12 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                   className={"signup-button"}
                   onClick={() => setSignupOpen(true)}
                 >
-                  SIGN UP
+                  JOIN SOFIYA
                 </Button>
               ) : null}
             </Box>
           </Stack>
+
           <Box className={"logo-frame"}>
             <div className={"logo-img"}></div>
           </Box>

@@ -1,18 +1,30 @@
+/** HOME NAVBAR **/
+
 .home-navbar {
   width: 100%;
-  height: 773px;
+  height: 680px;
   display: flex;
-  background: url("/public/img/banner.webp");
+  background:
+    linear-gradient(
+      90deg,
+      rgba(30, 28, 25, 0.96) 0%,
+      rgba(30, 28, 25, 0.88) 45%,
+      rgba(30, 28, 25, 0.65) 100%
+    ),
+    url("/public/img/banner.webp");
   background-size: cover;
+  background-position: center;
 }
 
 .home-navbar .navbar-container {
-  margin-top: 55px;
-  height: 642px;
+  margin-top: 35px;
+  height: 590px;
 }
 
+/** NAVIGATION **/
+
 .home-navbar .navbar-container .menu {
-  height: 50px;
+  height: 55px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -20,12 +32,13 @@
 }
 
 .home-navbar .navbar-container .menu .brand-logo {
-  width: 180px;
-  height: 40px;
+  width: 150px;
+  height: 42px;
+  object-fit: contain;
 }
 
 .home-navbar .navbar-container .menu .links {
-  min-width: 700px;
+  min-width: 650px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -33,14 +46,27 @@
 }
 
 .home-navbar .navbar-container .menu .links .login-button {
-  background: #3776cc;
-  color: #f8f8ff;
+  background: #d7b686;
+  color: #343434;
+  font-family: "Poppins";
+  font-weight: 500;
+  text-transform: none;
+  padding: 8px 22px;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.home-navbar .navbar-container .menu .links .login-button:hover {
+  background: #e2c89e;
 }
 
 .home-navbar .navbar-container .menu .user-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #d7b686;
 }
 
 .home-navbar a {
@@ -50,6 +76,8 @@
 .home-navbar .hover-line a {
   color: #f8f8ff;
   z-index: 100;
+  font-family: "Poppins";
+  font-size: 15px;
 }
 
 .home-navbar .underline {
@@ -74,79 +102,121 @@
   transform-origin: 0% 50%;
 }
 
+/** HERO SECTION **/
+
 .home-navbar .navbar-container .header-frame {
-  margin-top: 142px;
-  height: 462px;
+  margin-top: 105px;
+  height: 420px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .home-navbar .navbar-container .header-frame .detail {
-  width: 510px;
+  width: 540px;
   display: flex;
   flex-direction: column;
 }
 
-.home-navbar .navbar-container .header-frame .detail .head-main-txt {
-  width: 450px;
-  height: 150px;
+/** MAIN TITLE **/
+
+.home-navbar
+  .navbar-container
+  .header-frame
+  .detail
+  .head-main-txt {
+  width: 520px;
+  height: auto;
   font-family: "Roboto Serif";
-  font-size: 50px;
+  font-size: 48px;
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.75px;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
   color: #f8f8ff;
 }
 
-.home-navbar .navbar-container .header-frame .detail .wel-txt {
-  width: 510px;
-  height: 42px;
+/** SECOND TITLE **/
+
+.home-navbar
+  .navbar-container
+  .header-frame
+  .detail
+  .wel-txt {
+  width: 500px;
+  height: auto;
+  margin-top: 15px;
   font-family: "Roboto Serif";
-  font-size: 36px;
+  font-size: 27px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.54px;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
   color: #d7b686;
 }
 
-.home-navbar .navbar-container .header-frame .detail .service-txt {
-  margin-top: 23px;
-  width: 153px;
-  height: 23px;
+/** DESCRIPTION **/
+
+.home-navbar
+  .navbar-container
+  .header-frame
+  .detail
+  .service-txt {
+  margin-top: 20px;
+  width: 400px;
+  height: auto;
   font-family: "Roboto Serif";
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.3px;
-  color: #d5d5d5;
-}
-
-.home-navbar .navbar-container .detail .signup {
-  margin-top: 73px;
-}
-
-.home-navbar .navbar-container .detail .signup .signup-button {
-  width: 210px;
-  height: 60px;
-  border-radius: 4px;
-  background: #1976d2;
-  text-align: center;
-  font-family: Poppins;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
-  color: #f8f8ff;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: #d5d5d5;
 }
 
+/** SIGN UP **/
+
+.home-navbar .navbar-container .detail .signup {
+  margin-top: 42px;
+}
+
+.home-navbar
+  .navbar-container
+  .detail
+  .signup
+  .signup-button {
+  width: 180px;
+  height: 52px;
+  border-radius: 4px;
+  background: #d7b686;
+  text-align: center;
+  font-family: "Poppins";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #343434;
+  box-shadow: none;
+}
+
+.home-navbar
+  .navbar-container
+  .detail
+  .signup
+  .signup-button:hover {
+  background: #e2c89e;
+}
+
+/** BOOK IMAGE / LOGO AREA **/
+
 .home-navbar .navbar-container .logo-frame {
-  margin-top: 43px;
-  width: 690px;
-  height: 419px;
+  margin-top: 20px;
+  width: 500px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .home-navbar .navbar-container .logo-frame .logo-img {
@@ -154,24 +224,39 @@
   height: 100%;
   background: url("/public/img/logo.png");
   background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
-  filter: invert(25%);
+  filter: none;
 }
+
+/** OTHER NAVBAR **/
 
 .other-navbar {
   width: 100%;
-  height: 400px;
+  height: 115px;
   display: flex;
-  background: url("/public/img/banner.webp");
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(30, 28, 25, 0.96),
+      rgba(30, 28, 25, 0.88)
+    ),
+    url("/public/img/banner.webp");
+
   background-size: cover;
+  background-position: center;
 }
 
 .other-navbar .navbar-container {
-  margin-top: 55px;
+  width: 100%;
+  margin-top: 0;
 }
 
+/** NAVIGATION **/
+
 .other-navbar .navbar-container .menu {
-  height: 50px;
+  height: 115px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -179,12 +264,15 @@
 }
 
 .other-navbar .navbar-container .menu .brand-logo {
-  width: 180px;
-  height: 40px;
+  width: 150px;
+  height: 42px;
+  object-fit: contain;
 }
 
+/** LINKS **/
+
 .other-navbar .navbar-container .menu .links {
-  min-width: 700px;
+  min-width: 650px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -192,15 +280,40 @@
 }
 
 .other-navbar .navbar-container .menu .links .login-button {
-  background: #3776cc;
-  color: #f8f8ff;
+  background: #d7b686;
+  color: #343434;
+
+  font-family: "Poppins";
+  font-size: 14px;
+  font-weight: 500;
+
+  padding: 8px 22px;
+  border-radius: 4px;
+
+  text-transform: none;
+  box-shadow: none;
 }
 
-.other-navbar .navbar-container .menu .user-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 24px;
+.other-navbar
+  .navbar-container
+  .menu
+  .links
+  .login-button:hover {
+  background: #e2c89e;
 }
+
+/** USER AVATAR **/
+
+.other-navbar .navbar-container .menu .user-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #d7b686;
+}
+
+/** LINKS **/
 
 .other-navbar a {
   text-decoration: none;
@@ -209,7 +322,13 @@
 .other-navbar .hover-line a {
   color: #f8f8ff;
   z-index: 100;
+
+  font-family: "Poppins";
+  font-size: 15px;
+  font-weight: 400;
 }
+
+/** ACTIVE LINK **/
 
 .other-navbar .underline {
   display: block;
@@ -217,10 +336,13 @@
   border-bottom: solid 2px #d7b686;
 }
 
+/** HOVER EFFECT **/
+
 .other-navbar .hover-line:after {
   display: block;
   content: "";
   border-bottom: solid 2px #d7b686;
+
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
 }
@@ -233,137 +355,235 @@
   transform-origin: 0% 50%;
 }
 
-/* BASKET */
+/* =========================
+   SOFIYA BASKET
+   ========================= */
 
-.basket-frame {
-  position: relative;
-  padding: 10px 4px 0px 4px;
-  width: 450px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  background: #f8f8ff;
-  border-radius: 16px;
-}
-
-.basket-frame .all-check-box {
-  padding: 0px 6px;
-  width: 100%;
-  height: 35px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background: #d7b586;
-  border-width: 1px 0px;
-  border-style: solid;
-  border-color: #343434;
-}
-
-.basket-frame .basket-info-box {
-  position: relative;
-  margin-top: 6px;
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.basket-info-box .product-img {
-  width: 60px;
-  height: 60px;
-  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 29px;
-}
-
-.basket-info-box .product-name {
-  margin-left: 11px;
-  width: 185px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 30px;
-  color: #000000;
-}
-
-.basket-info-box .product-price {
-  width: 80px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 22px;
-  color: #ae0000;
-}
-
-.basket-info-box
-  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-  padding: 6.5px 14px;
-}
-
-.basket-info-box .css-ece9u5 {
-  min-width: 72px;
-}
-
-.basket-frame .cancel-btn {
-  position: absolute;
-  top: 33%;
-  right: 2%;
-  cursor: pointer;
-}
-
-.basket-frame .basket-order {
-  margin-top: 10px;
-  width: 100%;
-  height: 64px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  border-top: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-.basket-order .price {
-  width: 200px;
-  display: flex;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 30px;
-  color: #000000;
-}
-
-.basket-frame .orders-wrapper {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow-y: scroll;
-}
-
-.basket-frame .orders-wrapper::-webkit-scrollbar {
-  width: 10px;
-}
-
-.basket-frame .orders-wrapper::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 5px;
-}
-
-.basket-frame .orders-wrapper::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.basket-frame .orders-main-wrapper {
-  position: relative;
-  overflow: hidden;
-  margin-top: 10px;
-  width: 100%;
-  height: 260px;
-  display: flex;
-  flex-direction: column;
-}
+   .basket-frame {
+    position: relative;
+  
+    padding: 8px;
+  
+    width: 420px;
+    height: auto;
+  
+    display: flex;
+    flex-direction: column;
+  
+    background: #ffffff;
+  
+    border: 1px solid #e4ddd2;
+    border-radius: 10px;
+  
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* SELECT ALL */
+  
+  .basket-frame .all-check-box {
+    padding: 0 10px;
+  
+    width: 100%;
+    height: 38px;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  
+    background: #343434;
+  
+    border: none;
+    border-radius: 7px 7px 0 0;
+  
+    color: #ffffff;
+  }
+  
+  /* BOOK ITEM */
+  
+  .basket-frame .basket-info-box {
+    position: relative;
+  
+    margin-top: 8px;
+  
+    width: 100%;
+    min-height: 72px;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  
+    padding: 5px 4px;
+  
+    border-bottom: 1px solid #eee7dd;
+  }
+  
+  /* BOOK IMAGE */
+  
+  .basket-info-box .product-img {
+    width: 58px;
+    height: 72px;
+  
+    object-fit: cover;
+  
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.18));
+  
+    border-radius: 4px;
+  }
+  
+  /* BOOK NAME */
+  
+  .basket-info-box .product-name {
+    margin-left: 12px;
+  
+    width: 165px;
+  
+    font-family: "Poppins";
+  
+    font-style: normal;
+    font-weight: 500;
+  
+    font-size: 15px;
+    line-height: 21px;
+  
+    color: #343434;
+  
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  
+    overflow: hidden;
+  }
+  
+  /* BOOK PRICE */
+  
+  .basket-info-box .product-price {
+    width: 75px;
+  
+    font-family: "Poppins";
+  
+    font-style: normal;
+    font-weight: 600;
+  
+    font-size: 14px;
+    line-height: 20px;
+  
+    color: #9b743e;
+  }
+  
+  /* QUANTITY SELECT */
+  
+  .basket-info-box
+    .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    padding: 6px 10px;
+  }
+  
+  /* MATERIAL UI SELECT */
+  
+  .basket-info-box .css-ece9u5 {
+    min-width: 65px;
+  }
+  
+  /* DELETE BUTTON */
+  
+  .basket-frame .cancel-btn {
+    position: absolute;
+  
+    top: 50%;
+    right: 8px;
+  
+    transform: translateY(-50%);
+  
+    cursor: pointer;
+  
+    color: #888;
+  
+    transition: color 0.2s ease;
+  }
+  
+  .basket-frame .cancel-btn:hover {
+    color: #a33;
+  }
+  
+  /* ORDER SUMMARY */
+  
+  .basket-frame .basket-order {
+    margin-top: 8px;
+  
+    width: 100%;
+    height: 62px;
+  
+    display: flex;
+    flex-direction: row;
+  
+    justify-content: space-between;
+    align-items: center;
+  
+    padding: 0 12px;
+  
+    border-top: 1px solid #e4ddd2;
+  }
+  
+  /* TOTAL PRICE */
+  
+  .basket-order .price {
+    width: auto;
+  
+    display: flex;
+  
+    font-family: "Poppins";
+  
+    font-style: normal;
+    font-weight: 600;
+  
+    font-size: 17px;
+    line-height: 25px;
+  
+    color: #343434;
+  }
+  
+  /* SCROLL AREA */
+  
+  .basket-frame .orders-wrapper {
+    position: relative;
+  
+    overflow: hidden;
+  
+    width: 100%;
+    height: 100%;
+  
+    display: flex;
+    flex-direction: column;
+  
+    overflow-y: auto;
+  }
+  
+  /* SCROLLBAR */
+  
+  .basket-frame .orders-wrapper::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .basket-frame .orders-wrapper::-webkit-scrollbar-thumb {
+    background-color: #d7b686;
+    border-radius: 5px;
+  }
+  
+  .basket-frame .orders-wrapper::-webkit-scrollbar-track {
+    background: #f5f2ed;
+  }
+  
+  /* ORDERS WRAPPER */
+  
+  .basket-frame .orders-main-wrapper {
+    position: relative;
+  
+    overflow: hidden;
+  
+    margin-top: 8px;
+  
+    width: 100%;
+    height: 250px;
+  
+    display: flex;
+    flex-direction: column;
+  }

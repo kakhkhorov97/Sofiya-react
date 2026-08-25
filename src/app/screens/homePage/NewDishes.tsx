@@ -13,10 +13,7 @@ import { createSelector } from "reselect";
 import { retrieveNewDishes } from "./selector";
 import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/config";
-import {
-  ProductCollection,
-  ProductVolume,
-} from "../../../lib/enums/product.enum";
+import { ProductFormat } from "../../../lib/enums/product.enum";
 
 /** REDUX & SELECTOR */
 const newDishesRetriever = createSelector(retrieveNewDishes, (newDishes) => ({
@@ -37,10 +34,6 @@ export default function NewDishes() {
               {newDishes.length !== 0 ? (
                 newDishes.map((product: Product) => {
                   const imagePath = `${serverApi}/${product.productImages[0]}`;
-                  const sizeVolume =
-                    product.productCollection === ProductCollection.DRINK
-                      ? product.productVolume + "L"
-                      : product.productSize + " Size";
                   return (
                     <Card
                       key={product._id}
@@ -48,7 +41,7 @@ export default function NewDishes() {
                       className={"card"}
                     >
                       <CardOverflow>
-                        <div className="product-sale">{sizeVolume}</div>
+                        <div className="product-sale">{}</div>
                         <AspectRatio ratio="1">
                           <img src={imagePath} alt="" />
                         </AspectRatio>
@@ -68,7 +61,7 @@ export default function NewDishes() {
                               }}
                               noWrap
                             >
-                              {product.productName}
+                              {product.productTitle}
                             </Typography>
                             <Divider width="2" height="24" bg="#d9d9d9" />
                             <Typography className={"price"}>

@@ -42,33 +42,46 @@ export default function OtherNavbar(props: OtherNavbarProps) {
     handleCloseLogout,
     handleLogoutRequest,
   } = props;
+
   const { authMember } = useGlobals();
 
   return (
     <div className="other-navbar">
       <Container className="navbar-container">
         <Stack className="menu">
+          {/* SOFIYA LOGO */}
           <Box>
             <NavLink to="/">
-              <img className="brand-logo" src="/icons/bumarak.svg" />
+              <img
+                className="brand-logo"
+                src="/icons/sofiya.svg"
+                alt="Sofiya"
+              />
             </NavLink>
           </Box>
+
+          {/* NAVIGATION */}
           <Stack className="links">
             <Box className={"hover-line"}>
-              <NavLink to="/">Home</NavLink>
-            </Box>
-            <Box className={"hover-line"}>
-              <NavLink to="/products" activeClassName={"underline"}>
-                Products
+              <NavLink to="/" activeClassName={"underline"}>
+                Home
               </NavLink>
             </Box>
+
+            <Box className={"hover-line"}>
+              <NavLink to="/products" activeClassName={"underline"}>
+                Books
+              </NavLink>
+            </Box>
+
             {authMember ? (
               <Box className={"hover-line"}>
                 <NavLink to="/orders" activeClassName={"underline"}>
-                  Orders
+                  My Orders
                 </NavLink>
               </Box>
             ) : null}
+
             {authMember ? (
               <Box className={"hover-line"}>
                 <NavLink to="/member-page" activeClassName={"underline"}>
@@ -76,11 +89,14 @@ export default function OtherNavbar(props: OtherNavbarProps) {
                 </NavLink>
               </Box>
             ) : null}
+
             <Box className={"hover-line"}>
               <NavLink to="/help" activeClassName={"underline"}>
                 Help
               </NavLink>
             </Box>
+
+            {/* BASKET */}
             <Basket
               cartItems={cartItems}
               onAdd={onAdd}
@@ -89,6 +105,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
               onDeleteAll={onDeleteAll}
             />
 
+            {/* LOGIN / USER */}
             {!authMember ? (
               <Box>
                 <Button
@@ -109,9 +126,11 @@ export default function OtherNavbar(props: OtherNavbarProps) {
                 }
                 aria-haspopup={"true"}
                 onClick={handleLogoutClick}
+                alt="User"
               />
             )}
 
+            {/* LOGOUT MENU */}
             <Menu
               anchorEl={anchorEl}
               id="account-menu"
@@ -124,12 +143,14 @@ export default function OtherNavbar(props: OtherNavbarProps) {
                   overflow: "visible",
                   filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                   mt: 1.5,
+
                   "& .MuiAvatar-root": {
                     width: 32,
                     height: 32,
                     ml: -0.5,
                     mr: 1,
                   },
+
                   "&:before": {
                     content: '""',
                     display: "block",
@@ -144,8 +165,14 @@ export default function OtherNavbar(props: OtherNavbarProps) {
                   },
                 },
               }}
-              transformOrigin={{ horizontal: "right", vertical: "top" }}
-              anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+              transformOrigin={{
+                horizontal: "right",
+                vertical: "top",
+              }}
+              anchorOrigin={{
+                horizontal: "right",
+                vertical: "bottom",
+              }}
             >
               <MenuItem onClick={handleLogoutRequest}>
                 <ListItemIcon>

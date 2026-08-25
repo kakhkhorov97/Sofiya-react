@@ -61,6 +61,7 @@ class MemberService {
   public async login(input: LoginInput): Promise<Member> {
     try {
       const url = this.path + "/member/login";
+
       const result = await axios.post(url, input, { withCredentials: true });
       console.log("login:", result);
 

@@ -1,26 +1,49 @@
 export const faq = [
-	{
-		question: 'How to make order?',
-		answer: 'You should choose products and make an order via basket!',
-	},
-	{
-		question: 'How long does delivery takes?',
-		answer: 'It depends on your location. The max delivery time is 1 hour!',
-	},
-	{
-		question: 'Is our details secure in this platform?',
-		answer: 'Of course, we take full responsibility for your provided user details!',
-	},
-	{
-		question: 'I am blocked, what should I do?',
-		answer: 'There is a reason for your block, please contact to us!',
-	},
-	{
-		question: 'How can I cancel order?',
-		answer: 'You can cancel your order any time easily, just go to your orders page!',
-	},
-	{
-		question: 'Who developed this platform?',
-		answer: 'ITC Global developers developed this platform!',
-	},
+  {
+    question: "How can I place an order?",
+    answer:
+      "Choose the books you want, add them to your basket, and proceed to checkout to complete your order.",
+  },
+
+  {
+    question: "How long does delivery take?",
+    answer:
+      "Delivery time depends on your location and the availability of the books. You can check the estimated delivery time when placing your order.",
+  },
+
+  {
+    question: "Are my personal details secure?",
+    answer:
+      "Yes, we take the security and privacy of your personal information seriously and protect your details on our platform.",
+  },
+
+  {
+    question: "What should I do if my account is blocked?",
+    answer:
+      "If your account has been blocked, please contact our administration team for assistance.",
+  },
+
+  {
+    question: "Can I cancel my order?",
+    answer:
+      "You can request to cancel your order before it has been processed. Please contact our support team as soon as possible.",
+  },
+
+  {
+    question: "Can I buy e-books or audiobooks?",
+    answer:
+      "Yes, our bookstore offers digital books, including e-books and audiobooks, depending on availability.",
+  },
+
+  {
+    question: "How can I find a specific book?",
+    answer:
+      "You can use the search bar or browse books by genre, author, title, or other available categories.",
+  },
+
+  {
+    question: "Who developed this platform?",
+    answer:
+      "This online bookstore platform was developed as a modern digital bookstore where users can browse and purchase books and digital content.",
+  },
 ];

@@ -1,19 +1,19 @@
 import {
-  ProductCollection,
-  ProductSize,
+  ProductFormat,
+  ProductGenre,
   ProductStatus,
 } from "../enums/product.enum";
 
 export interface Product {
   _id: string;
   productStatus: ProductStatus;
-  productCollection: ProductCollection;
-  productName: string;
+  productAuthor: string;
+  productTitle: string;
+  productFormat: ProductFormat;
+  productGenre: ProductGenre;
   productPrice: number;
   productLeftCount: number;
-  productSize: ProductSize;
-  productVolume: number;
-  productDesc?: string;
+  productDecs: string;
   productImages: string[];
   productViews: number;
   createdAt: Date;
@@ -24,6 +24,32 @@ export interface ProductInquiry {
   order: string;
   page: number;
   limit: number;
-  productCollection?: ProductCollection;
   search?: string;
+  productFormat?: ProductFormat;
+  productGenre?: ProductGenre;
+}
+
+export interface ProductInput {
+  productStatus: ProductStatus;
+  productFormat: ProductFormat;
+  productTitle: string;
+  productPrice: number;
+  productLeftCount: number;
+  productGenre: ProductGenre;
+  productImages: string[];
+  productDecs: string;
+  productViews: number;
+}
+
+export interface ProductUpdateInput {
+  _id: string;
+  productStatus?: ProductStatus;
+  productFormat?: ProductFormat;
+  productTitle?: string;
+  productPrice?: number;
+  productLeftCount?: number;
+  productGenre?: ProductGenre;
+  productImages?: string[];
+  productDecs?: string;
+  productViews?: number;
 }

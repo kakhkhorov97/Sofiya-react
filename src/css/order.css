@@ -1,342 +1,687 @@
-.order-page {
+/* =========================================================
+   SOFIYA BOOKSTORE - ORDERS PAGE
+   ========================================================= */
+
+   .order-page {
 	width: 100%;
 	height: auto;
-	background: #f8f8ff;
+	min-height: 100vh;
+  
 	display: flex;
-}
-
-.order-page .order-container {
+  
+	background: #f7f3ea;
+  }
+  
+  
+  /* =========================================================
+	 MAIN CONTAINER
+	 ========================================================= */
+  
+  .order-page .order-container {
 	margin-top: 50px;
 	margin-bottom: 50px;
+  
 	display: flex;
 	flex-direction: row;
-}
-
-.order-page .order-left {
+	align-items: flex-start;
+  }
+  
+  
+  /* =========================================================
+	 LEFT SIDE
+	 ========================================================= */
+  
+  .order-page .order-left {
 	width: 860px;
 	height: auto;
-}
-
-.order-page .order-right {
+  }
+  
+  
+  /* =========================================================
+	 RIGHT SIDE - MEMBER / PAYMENT
+	 ========================================================= */
+  
+  .order-page .order-right {
 	width: 360px;
 	height: auto;
+  
 	margin-top: 86px;
 	margin-left: 30px;
+  
 	display: flex;
 	flex-direction: column;
-}
-
-.order-page .order-right .order-info-box {
+  }
+  
+  
+  /* =========================================================
+	 ORDER INFORMATION CARD
+	 ========================================================= */
+  
+  .order-page .order-right .order-info-box {
 	width: 360px;
 	height: auto;
-	padding: 20px;
+  
+	padding: 25px;
+  
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: #f8f8ff;
-	box-shadow: 15px 14px 4px rgba(0, 0, 0, 0.25), inset -1px 0px 16px 13px rgb(24 23 112 / 20%);
-	border-radius: 16px;
+  
+	background: #fffdf9;
+  
+	border: 1px solid #e5ded4;
+  
+	box-shadow:
+	  0 10px 30px rgba(52, 52, 52, 0.10);
+  
+	border-radius: 12px;
+  
 	margin-bottom: 25px;
-}
-
-.order-page .order-right .order-info-box .member-box {
+  }
+  
+  
+  /* MEMBER BOX */
+  
+  .order-page .order-right .order-info-box .member-box {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-
-.order-page .order-right .order-info-box .liner {
+  }
+  
+  
+  /* DIVIDER */
+  
+  .order-page .order-right .order-info-box .liner {
 	width: 100%;
-	border: 1px solid #a1a1a1;
-	margin-top: 40px;
-	margin-bottom: 8px;
-}
-
-.order-page .order-info-box .order-user-img {
+  
+	border: 0;
+  
+	border-top: 1px solid #ddd4c7;
+  
+	margin-top: 30px;
+	margin-bottom: 12px;
+  }
+  
+  
+  /* =========================================================
+	 USER IMAGE
+	 ========================================================= */
+  
+  .order-page .order-info-box .order-user-img {
 	position: relative;
+  
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-
-.order-page .order-info-box .order-user-img .order-user-avatar {
-	width: 117px;
-	height: 112px;
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-	border-radius: 37px;
-}
-
-.order-page .order-info-box .order-user-icon-box {
+  }
+  
+  .order-page .order-info-box .order-user-img .order-user-avatar {
+	width: 105px;
+	height: 105px;
+  
+	object-fit: cover;
+  
+	border-radius: 50%;
+  
+	border: 3px solid #d7b686;
+  
+	filter: drop-shadow(
+	  0px 5px 10px rgba(52, 52, 52, 0.15)
+	);
+  }
+  
+  
+  /* PROFILE IMAGE ICON */
+  
+  .order-page .order-info-box .order-user-icon-box {
 	position: absolute;
+  
 	padding: 5px;
+  
 	width: 30px;
 	height: 30px;
-	top: 81%;
+  
+	top: 78%;
 	right: 0;
+  
 	display: flex;
-	background: rgba(0, 0, 0, 0.33);
-	border-radius: 37px;
-}
-
-.order-page .order-user-icon-box .order-user-prof-img {
+  
+	background: #343434;
+  
+	border-radius: 50%;
+  
+	border: 2px solid #fffdf9;
+  }
+  
+  .order-page .order-user-icon-box .order-user-prof-img {
 	filter: brightness(0) invert(1);
-}
-
-.order-page .order-info-box .order-user-name {
-	margin-top: 10px;
-	font-family: 'Commissioner';
+  }
+  
+  
+  /* =========================================================
+	 USER INFORMATION
+	 ========================================================= */
+  
+  .order-page .order-info-box .order-user-name {
+	margin-top: 12px;
+  
+	font-family: "Roboto Serif";
+  
 	font-style: normal;
-	font-weight: 500;
-	font-size: 28px;
-	line-height: 36px;
-	color: #08090d;
-}
-
-.order-page .order-info-box .order-user-prof {
-	font-family: 'Commissioner';
+	font-weight: 600;
+  
+	font-size: 24px;
+	line-height: 32px;
+  
+	color: #343434;
+  }
+  
+  .order-page .order-info-box .order-user-prof {
+	font-family: "Poppins";
+  
 	font-style: normal;
-	font-weight: 500;
-	font-size: 20px;
-	line-height: 36px;
-	color: #a1a1a1;
-}
-
-.order-page .order-info-box .order-user-address {
+	font-weight: 400;
+  
+	font-size: 15px;
+	line-height: 26px;
+  
+	color: #8a837a;
+  }
+  
+  
+  /* ADDRESS */
+  
+  .order-page .order-info-box .order-user-address {
 	width: 90%;
+  
 	display: flex;
 	flex-direction: row;
-}
-
-.order-page .order-info-box .spec-address-txt {
-	margin-left: 5px;
-	font-family: 'DM Sans';
+  
+	align-items: center;
+  }
+  
+  .order-page .order-info-box .spec-address-txt {
+	margin-left: 7px;
+  
+	font-family: "Poppins";
+  
 	font-style: normal;
 	font-weight: 400;
-	font-size: 16px;
-	line-height: 24px;
-	color: #616164;
-}
-
-.order-page .order-info-box .card-input {
+  
+	font-size: 14px;
+	line-height: 22px;
+  
+	color: #77716a;
+  }
+  
+  
+  /* =========================================================
+	 CARD INPUTS
+	 ========================================================= */
+  
+  .order-page .order-info-box .card-input {
 	margin-top: 10px;
-	padding: 10px;
+  
+	padding: 10px 12px;
+  
 	width: 100%;
-	height: 40px;
-	background: #f5f5f5;
-	border-radius: 10px;
-	font-family: 'Nunito';
+	height: 42px;
+  
+	background: #f7f3ea;
+  
+	border: 1px solid #ddd4c7;
+  
+	border-radius: 7px;
+  
+	font-family: "Poppins";
+  
 	font-style: normal;
 	font-weight: 400;
-	font-size: 16px;
+  
+	font-size: 14px;
 	line-height: 22px;
-	border: 0.5px solid #b3a6a6;
-	letter-spacing: -0.02em;
+  
 	color: #434141;
-}
-
-.order-page .order-info-box .card-half-input {
+  
+	outline: none;
+  
+	transition:
+	  border-color 0.2s ease,
+	  box-shadow 0.2s ease;
+  }
+  
+  .order-page .order-info-box .card-input:focus {
+	border-color: #b8925a;
+  
+	box-shadow:
+	  0 0 0 2px rgba(184, 146, 90, 0.12);
+  }
+  
+  
+  /* HALF INPUT */
+  
+  .order-page .order-info-box .card-half-input {
 	margin-top: 10px;
-	padding: 10px;
+  
+	padding: 10px 12px;
+  
 	width: 49%;
-	height: 40px;
-	background: #f5f5f5;
-	border-radius: 10px;
-	font-family: 'Nunito';
+	height: 42px;
+  
+	background: #f7f3ea;
+  
+	border: 1px solid #ddd4c7;
+  
+	border-radius: 7px;
+  
+	font-family: "Poppins";
+  
 	font-style: normal;
 	font-weight: 400;
-	font-size: 16px;
+  
+	font-size: 14px;
 	line-height: 22px;
-	border: 0.5px solid #b3a6a6;
-	letter-spacing: -0.02em;
+  
 	color: #434141;
-}
-
-.order-page .order-info-box .cards-box {
-	margin-top: 35px;
+  
+	outline: none;
+  
+	transition:
+	  border-color 0.2s ease,
+	  box-shadow 0.2s ease;
+  }
+  
+  .order-page .order-info-box .card-half-input:focus {
+	border-color: #b8925a;
+  
+	box-shadow:
+	  0 0 0 2px rgba(184, 146, 90, 0.12);
+  }
+  
+  
+  /* =========================================================
+	 CARD BUTTONS
+	 ========================================================= */
+  
+  .order-page .order-info-box .cards-box {
+	margin-top: 30px;
+  
 	width: 80%;
+  
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-}
-
-.order-page .order-info-box .css-wca78v-MuiButtonBase-root-MuiButton-root {
+  }
+  
+  .order-page .order-info-box .css-wca78v-MuiButtonBase-root-MuiButton-root {
 	min-width: 160px;
-}
-
-.order-page .order-left .order-nav-frame {
+  }
+  
+  
+  /* =========================================================
+	 ORDER NAVIGATION
+	 ========================================================= */
+  
+  .order-page .order-left .order-nav-frame {
 	width: 100%;
 	height: 60px;
+  
 	display: flex;
+  
 	flex-direction: row;
+  
 	justify-content: center;
-	border-bottom: 1px solid #f8f8ff;
-}
-
-.order-page .order-left .order-nav-frame .table-list {
+  
+	border-bottom: 1px solid #ddd4c7;
+  }
+  
+  .order-page .order-left .order-nav-frame .table-list {
 	display: flex;
+  
 	justify-content: space-between;
-}
-
-.order-page .css-1gsv261 {
+  }
+  
+  
+  /* MUI TABS */
+  
+  .order-page .css-1gsv261 {
 	width: 75%;
-}
-
-.order-page .css-heg063-MuiTabs-flexContainer {
+  }
+  
+  .order-page .css-heg063-MuiTabs-flexContainer {
 	justify-content: space-between;
-}
-
-.order-page .order-main-content {
+  }
+  
+  .order-page .css-19kzrtu {
+	padding-top: 24px;
+  }
+  
+  
+  /* =========================================================
+	 ORDER CONTENT
+	 ========================================================= */
+  
+  .order-page .order-main-content {
 	width: 855px;
 	height: auto;
-}
-
-.order-page .css-19kzrtu {
-	padding-top: 24px;
-}
-
-.order-page .order-main-content .order-main-box {
+  }
+  
+  
+  /* =========================================================
+	 ORDER CARD
+	 ========================================================= */
+  
+  .order-page .order-main-content .order-main-box {
 	position: relative;
+  
 	width: 100%;
+  
 	max-height: 285px;
+  
 	margin-bottom: 25px;
-	background: #f8f8ff;
-	box-shadow: -13px 16px 4px rgba(0, 0, 0, 0.25), inset 0px -3px 20px 11px #18177033;
-	border-radius: 16px;
-}
-
-.order-page .order-main-content .order-main-box .order-box-scroll {
-	position: relative;
+  
+	background: #fffdf9;
+  
+	border: 1px solid #e5ded4;
+  
+	box-shadow:
+	  0 8px 25px rgba(52, 52, 52, 0.08);
+  
+	border-radius: 12px;
+  
 	overflow: hidden;
+  }
+  
+  
+  /* =========================================================
+	 ORDER ITEMS SCROLL
+	 ========================================================= */
+  
+  .order-page
+	.order-main-content
+	.order-main-box
+	.order-box-scroll {
+	position: relative;
+  
+	overflow: hidden;
+  
 	width: 100%;
+  
 	min-height: 105px;
 	max-height: 205px;
+  
 	margin-top: 15px;
+  
+	padding-bottom: 5px;
+  
 	display: flex;
+  
 	flex-direction: column;
+  
 	align-items: start;
-	overflow-y: scroll;
-}
-
-.order-page .order-main-content .order-main-box .order-box-scroll::-webkit-scrollbar {
-	width: 7px;
-}
-
-.order-page .order-main-content .order-main-box .order-box-scroll::-webkit-scrollbar-thumb {
-	background-color: #8989db;
+  
+	overflow-y: auto;
+  }
+  
+  
+  /* SCROLLBAR */
+  
+  .order-page
+	.order-main-content
+	.order-main-box
+	.order-box-scroll::-webkit-scrollbar {
+	width: 6px;
+  }
+  
+  .order-page
+	.order-main-content
+	.order-main-box
+	.order-box-scroll::-webkit-scrollbar-thumb {
+	background-color: #c5a36b;
+  
 	border-radius: 5px;
-}
-
-.order-page .order-box-scroll .orders-name-price {
+  }
+  
+  .order-page
+	.order-main-content
+	.order-main-box
+	.order-box-scroll::-webkit-scrollbar-track {
+	background: #f7f3ea;
+  }
+  
+  
+  /* =========================================================
+	 ORDER ITEM
+	 ========================================================= */
+  
+  .order-page .order-box-scroll .orders-name-price {
 	position: relative;
-	height: 47px;
+  
+	height: 55px;
+  
 	margin-top: 5px;
-	margin-left: 50px;
+	margin-left: 40px;
+  
 	display: flex;
+  
 	flex-direction: row;
+  
 	align-items: center;
-}
-
-.order-page .order-box-scroll .orders-name-price .order-dish-img {
+  }
+  
+  
+  /* BOOK IMAGE */
+  
+  .order-page .order-box-scroll .orders-name-price .order-dish-img {
 	position: relative;
+  
 	width: 50px;
-	height: 47px;
-	border-radius: 29px;
+	height: 55px;
+  
+	border-radius: 5px;
+  
 	background-size: cover;
-}
-
-.order-page .order-box-scroll .orders-name-price .title-dish {
+	background-position: center;
+  
+	box-shadow:
+	  0 3px 8px rgba(52, 52, 52, 0.15);
+  }
+  
+  
+  /* BOOK TITLE */
+  
+  .order-page .order-box-scroll .orders-name-price .title-dish {
 	position: relative;
+  
 	width: 260px;
 	height: 36px;
+  
 	margin-left: 20px;
-	font-family: 'Commissioner';
+  
+	font-family: "Poppins";
+  
 	font-style: normal;
 	font-weight: 500;
-	font-size: 22px;
+  
+	font-size: 17px;
 	line-height: 36px;
-	color: #000000;
-}
-
-.order-page .order-box-scroll .orders-name-price .price-box {
+  
+	color: #343434;
+  }
+  
+  
+  /* PRICE */
+  
+  .order-page .order-box-scroll .orders-name-price .price-box {
 	position: relative;
+  
 	max-width: 170px;
 	height: 100%;
+  
 	margin-left: 150px;
+  
 	display: flex;
+  
 	flex-direction: row;
+  
 	align-items: center;
+  
 	justify-content: space-between;
-}
-
-.order-page .order-box-scroll .orders-name-price .price-box p {
-	font-family: 'Poppins';
+  }
+  
+  .order-page .order-box-scroll .orders-name-price .price-box p {
+	font-family: "Poppins";
+  
 	font-style: normal;
-	font-weight: 400;
-	font-size: 18px;
+	font-weight: 500;
+  
+	font-size: 15px;
 	line-height: 27px;
-	color: #262626;
-}
-
-.order-page .order-main-content .order-main-box .total-price-box {
+  
+	color: #9b743e;
+  }
+  
+  
+  /* =========================================================
+	 TOTAL PRICE
+	 ========================================================= */
+  
+  .order-page
+	.order-main-content
+	.order-main-box
+	.total-price-box {
 	position: relative;
+  
 	width: 100%;
-	height: 41px;
-	margin: 7px 0 7px 0;
+	height: 55px;
+  
+	margin: 7px 0;
+  
+	padding: 0 15px;
+  
 	display: flex;
+  
 	flex-direction: row;
+  
 	align-items: center;
+  
 	justify-content: space-around;
+  
 	box-sizing: border-box;
-	border-radius: 5px;
+  
+	border-top: 1px solid #e5ded4;
+  
+	background: #faf6ef;
+  
 	overflow: hidden;
-}
-
-.order-page .order-main-content .total-price-box .cancel-button {
-	border-radius: 10px;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	max-height: 40px;
-}
-
-.order-page .order-main-content .total-price-box .pay-button {
-	background: #56b74d;
-	color: #f8f8ff;
-	border-radius: 10px;
-	max-height: 40px;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.order-page .order-main-content .total-price-box .verify-button {
-	background: #0288d1;
-	color: #f8f8ff;
-	border-radius: 10px;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.order-page .order-main-content .order-main-box .total-price-box .box-total {
+  }
+  
+  
+  /* TOTAL */
+  
+  .order-page
+	.order-main-content
+	.order-main-box
+	.total-price-box
+	.box-total {
 	position: relative;
+  
 	max-width: 535px;
 	height: 100%;
+  
 	display: flex;
+  
 	flex-direction: row;
+  
 	align-items: center;
+  
 	justify-content: center;
-}
-
-.order-page .total-price-box .box-total p {
+  }
+  
+  .order-page .total-price-box .box-total p {
 	margin-left: 20px;
-	font-family: 'Commissioner';
+  
+	font-family: "Poppins";
+  
 	font-style: normal;
 	font-weight: 500;
+  
 	font-size: 14px;
 	line-height: 36px;
-	color: #000000;
-}
-
-.order-page .total-price-box .box-total .data-compl {
-	font-family: 'Commissioner';
+  
+	color: #343434;
+  }
+  
+  .order-page .total-price-box .box-total .data-compl {
+	font-family: "Poppins";
+  
 	font-style: normal;
-	font-weight: 500;
+	font-weight: 600;
+  
 	font-size: 14px;
 	line-height: 36px;
-	color: #000000;
-}
+  
+	color: #9b743e;
+  }
+  
+  
+  /* =========================================================
+	 ORDER BUTTONS
+	 ========================================================= */
+  
+  .order-page
+	.order-main-content
+	.total-price-box
+	.cancel-button {
+	border-radius: 7px;
+  
+	max-height: 40px;
+  
+	color: #77716a;
+  
+	border-color: #c9c0b4;
+  }
+  
+  .order-page
+	.order-main-content
+	.total-price-box
+	.pay-button {
+	background: #343434;
+  
+	color: #f8f8ff;
+  
+	border-radius: 7px;
+  
+	max-height: 40px;
+  
+	box-shadow: none;
+  }
+  
+  .order-page
+	.order-main-content
+	.total-price-box
+	.pay-button:hover {
+	background: #4a4a4a;
+  }
+  
+  .order-page
+	.order-main-content
+	.total-price-box
+	.verify-button {
+	background: #b8925a;
+  
+	color: #ffffff;
+  
+	border-radius: 7px;
+  
+	max-height: 40px;
+  
+	box-shadow: none;
+  }
+  
+  .order-page
+	.order-main-content
+	.total-price-box
+	.verify-button:hover {
+	background: #9f7b49;
+  }

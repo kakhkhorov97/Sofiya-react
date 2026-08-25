@@ -60,7 +60,7 @@ export default function PopularDishes() {
                             }}
                             noWrap
                           >
-                            {product.productName}
+                            {product.productTitle}
                           </Typography>
                           <Typography
                             sx={{
@@ -99,7 +99,7 @@ export default function PopularDishes() {
                           }}
                           noWrap
                         >
-                          {product.productDesc}
+                          {product.productDecs}
                         </Typography>
                       </CardOverflow>
                     </Card>

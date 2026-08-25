@@ -9,14 +9,27 @@ class ProductService {
     this.path = serverApi;
   }
 
-  public async getProducts(input: ProductInquiry): Promise<Product[]> {
+  public async getProducts(input: ProductInquiry): Promise<{
+    products: Product[];
+    total: number;
+  }> {
     try {
       let url = `${this.path}/product/all?order=${input.order}&page=${input.page}&limit=${input.limit}`;
-      if (input.productCollection)
-        url += `&productCollection=${input.productCollection}`;
-      if (input.search) url += `&search=${input.search}`;
+
+      if (input.productFormat) {
+        url += `&productFormat=${input.productFormat}`;
+      }
+
+      if (input.productGenre) {
+        url += `&productGenre=${input.productGenre}`;
+      }
+
+      if (input.search) {
+        url += `&search=${encodeURIComponent(input.search)}`;
+      }
 
       const result = await axios.get(url);
+
       console.log("result:", result);
 
       return result.data;
