@@ -204,15 +204,11 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                   className={"signup-button"}
                   onClick={() => setSignupOpen(true)}
                 >
-                  JOIN SOFIYA
+                  SIGNUP
                 </Button>
               ) : null}
             </Box>
           </Stack>
-
-          <Box className={"logo-frame"}>
-            <div className={"logo-img"}></div>
-          </Box>
         </Stack>
       </Container>
     </div>

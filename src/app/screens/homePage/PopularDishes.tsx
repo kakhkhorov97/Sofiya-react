@@ -16,98 +16,77 @@ import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/config";
 
 /** REDUX & SELECTOR */
-const popularDishesRetriever = createSelector(
+const popularBooksRetriever = createSelector(
   retrievePopularDishes,
-  (popularDishes) => ({ popularDishes }),
+  (popularDishes) => ({
+    popularBooks: popularDishes,
+  }),
 );
 
-export default function PopularDishes() {
-  const { popularDishes } = useSelector(popularDishesRetriever);
+export default function PopularBooks() {
+  const { popularBooks } = useSelector(popularBooksRetriever);
 
-  // console.log("popularDishes:", popularDishes);
   return (
     <div className="popular-dishes-frame">
       <Container>
         <Stack className="popular-section">
-          <Box className="category-title">Popular Dishes</Box>
+          <Box className="category-title">Popular Books</Box>
+
           <Stack className="cards-frame">
-            {popularDishes.length !== 0 ? (
-              popularDishes.map((product: Product) => {
+            {popularBooks.length !== 0 ? (
+              popularBooks.map((product: Product) => {
                 const imagePath = `${serverApi}/${product.productImages[0]}`;
+
                 return (
                   <CssVarsProvider key={product._id}>
-                    <Card className={"card"}>
-                      <CardCover>
-                        <img src={imagePath} alt="" />
-                      </CardCover>
-                      <CardCover className={"card-cover"} />
-                      <CardContent sx={{ justifyContent: "flex-end" }}>
-                        <Stack
-                          flexDirection={"row"}
-                          justifyContent={"space-between"}
-                          sx={{ width: "260px" }}
-                        >
-                          <Typography
-                            level="h2"
-                            fontSize="lg"
-                            textColor="#fff"
-                            mb={1}
-                            sx={{
-                              display: "block",
-                              overflow: "hidden",
-                              textOverflow: "ellipsis",
-                              whiteSpace: "nowrap",
-                            }}
-                            noWrap
-                          >
-                            {product.productTitle}
-                          </Typography>
-                          <Typography
-                            sx={{
-                              fontWeight: "md",
-                              color: "neutral.300",
-                              alignItems: "center",
-                              display: "flex",
-                            }}
-                          >
-                            {product.productViews}
-                            <VisibilityIcon
-                              sx={{ fontSize: 25, marginLeft: "5px" }}
-                            />
-                          </Typography>
-                        </Stack>
-                      </CardContent>
-                      <CardOverflow
-                        sx={{
-                          display: "flex",
-                          gap: 1.5,
-                          py: 1.5,
-                          px: "var(--Card-padding)",
-                          borderTop: "1px solid",
-                          height: "60px",
-                          width: "290px",
-                        }}
-                      >
-                        <Typography
-                          startDecorator={<DescriptionOutlinedIcon />}
-                          textColor="neutral.300"
-                          sx={{
-                            display: "block",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
-                          }}
-                          noWrap
-                        >
+                    <Card className="book-card">
+                      {/* BOOK COVER */}
+                      <div className="book-cover">
+                        <img src={imagePath} alt={product.productTitle} />
+                      </div>
+
+                      {/* BOOK INFORMATION */}
+                      <div className="book-info">
+                        {/* TITLE */}
+                        <Typography className="book-title">
+                          {product.productTitle}
+                        </Typography>
+
+                        {/* DESCRIPTION */}
+                        <Typography className="book-description">
                           {product.productDecs}
                         </Typography>
-                      </CardOverflow>
+
+                        {/* BOTTOM INFORMATION */}
+                        <Stack
+                          direction="row"
+                          justifyContent="space-between"
+                          alignItems="center"
+                          className="book-bottom"
+                        >
+                          {/* PRICE */}
+                          <Typography className="book-price">
+                            ${product.productPrice}
+                          </Typography>
+
+                          {/* VIEWS */}
+                          <Typography className="book-views">
+                            <VisibilityIcon
+                              sx={{
+                                fontSize: 18,
+                                marginRight: "4px",
+                              }}
+                            />
+                            {product.productViews}
+                          </Typography>
+                        </Stack>
+                      </div>
                     </Card>
                   </CssVarsProvider>
                 );
               })
             ) : (
-              <Box className="no-data">Popular products are not available!</Box>
+              <Box className="no-data">Popular books are not available!</Box>
             )}
           </Stack>
         </Stack>

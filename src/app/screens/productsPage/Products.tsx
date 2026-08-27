@@ -16,7 +16,6 @@ import ProductService from "../../services/ProductService";
 import { ProductFormat, ProductGenre } from "../../../lib/enums/product.enum";
 import { useDispatch, useSelector } from "react-redux";
 import { serverApi } from "../../../lib/config";
-import ProductsPage from ".";
 import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/serach";
 
@@ -24,6 +23,7 @@ import { CartItem } from "../../../lib/types/serach";
 const actionDispatch = (dispatch: Dispatch) => ({
   setProducts: (data: Product[]) => dispatch(setProducts(data)),
 });
+
 const productsRetriever = createSelector(retrieveProducts, (products) => ({
   products,
 }));
@@ -34,6 +34,7 @@ interface ProductsProps {
 
 export default function Products(props: ProductsProps) {
   const { onAdd } = props;
+
   const { setProducts } = actionDispatch(useDispatch());
   const { products } = useSelector(productsRetriever);
 
@@ -45,9 +46,15 @@ export default function Products(props: ProductsProps) {
     productGenre: undefined,
     search: "",
   });
+
   const [searchText, setSearchText] = useState<string>("");
   const [total, setTotal] = useState<number>(0);
+
   const history = useHistory();
+
+  /* =========================
+     GET PRODUCTS
+     ========================= */
 
   useEffect(() => {
     const product = new ProductService();
@@ -58,67 +65,104 @@ export default function Products(props: ProductsProps) {
         setProducts(data.products);
         setTotal(data.total);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   }, [productSearch]);
+
+  /* =========================
+     CLEAR SEARCH
+     ========================= */
 
   useEffect(() => {
     if (searchText === "") {
-      productSearch.search = "";
-      setProductSearch({ ...productSearch });
+      setProductSearch((prev) => ({
+        ...prev,
+        page: 1,
+        search: "",
+      }));
     }
   }, [searchText]);
 
-  //* HANDLERS
+  /* =========================
+     HANDLERS
+     ========================= */
+
+  // FORMAT FILTER
+  // Selecting a format clears the genre.
   const searchCollectionHandler = (format: ProductFormat) => {
-    productSearch.page = 1;
-    productSearch.productFormat = format;
-    setProductSearch({ ...productSearch });
+    setProductSearch((prev) => ({
+      ...prev,
+      page: 1,
+      productFormat: format,
+      productGenre: undefined,
+    }));
   };
 
+  // GENRE FILTER
+  // Selecting a genre clears the format.
   const searchGenreHandler = (genre: ProductGenre) => {
-    productSearch.page = 1;
-    productSearch.productGenre = genre;
-    setProductSearch({ ...productSearch });
+    setProductSearch((prev) => ({
+      ...prev,
+      page: 1,
+      productGenre: genre,
+      productFormat: undefined,
+    }));
   };
 
-  const searchOrderHandler = (order: string) => {
-    productSearch.page = 1;
-    productSearch.order = order;
-    setProductSearch({ ...productSearch });
-  };
-
+  // SEARCH
   const searchProductHandler = () => {
-    productSearch.search = searchText;
-    setProductSearch({ ...productSearch });
+    setProductSearch((prev) => ({
+      ...prev,
+      page: 1,
+      search: searchText,
+    }));
   };
 
+  // PAGINATION
   const paginationHandler = (e: ChangeEvent<any>, value: number) => {
-    productSearch.page = value;
-    setProductSearch({ ...productSearch });
+    setProductSearch((prev) => ({
+      ...prev,
+      page: value,
+    }));
   };
 
+  // PRODUCT DETAIL
   const chooseDishHandler = (id: string) => {
     history.push(`/products/${id}`);
   };
+
+  /* =========================
+     RENDER
+     ========================= */
 
   return (
     <div className={"products"}>
       <Container>
         <Stack flexDirection={"column"} alignItems={"center"}>
+          {/* =========================
+              SEARCH
+              ========================= */}
+
           <Stack className={"avatar-big-box"}>
             <Stack className={"top-text"}>
               <p></p>
+
               <Stack className={"single-search-big-box"}>
                 <input
                   type={"search"}
                   className={"single-search-input"}
                   name={"singleResearch"}
                   placeholder={"Type here"}
+                  value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
                   onKeyDown={(e) => {
-                    if (e.key === "Enter") searchProductHandler();
+                    if (e.key === "Enter") {
+                      searchProductHandler();
+                    }
                   }}
                 />
+
                 <Button
                   className={"single-button-search"}
                   variant="contained"
@@ -131,8 +175,37 @@ export default function Products(props: ProductsProps) {
             </Stack>
           </Stack>
 
+          {/* =========================
+              GENRE FILTER
+              ========================= */}
+
           <Stack className={"genre-filter-section"}>
             <Stack className={"genre-filter-box"}>
+              {/* ALL BOOKS */}
+
+              <Button
+                variant={"contained"}
+                color={
+                  productSearch.productGenre === undefined &&
+                  productSearch.productFormat === undefined
+                    ? "primary"
+                    : "secondary"
+                }
+                className={"genre"}
+                onClick={() => {
+                  setProductSearch((prev) => ({
+                    ...prev,
+                    page: 1,
+                    productGenre: undefined,
+                    productFormat: undefined,
+                  }));
+                }}
+              >
+                ALL BOOKS
+              </Button>
+
+              {/* GENRES */}
+
               {Object.values(ProductGenre).map((genre) => (
                 <Button
                   key={genre}
@@ -151,9 +224,15 @@ export default function Products(props: ProductsProps) {
             </Stack>
           </Stack>
 
+          {/* =========================
+              BOOK FORMAT FILTER
+              ========================= */}
+
           <Stack className={"list-category-section"}>
             <Stack className={"product-category"}>
               <div className={"category-main"}>
+                {/* AUDIOBOOK */}
+
                 <Button
                   variant={"contained"}
                   color={
@@ -167,6 +246,9 @@ export default function Products(props: ProductsProps) {
                 >
                   AUDIOBOOK
                 </Button>
+
+                {/* EBOOK */}
+
                 <Button
                   variant={"contained"}
                   color={
@@ -178,6 +260,9 @@ export default function Products(props: ProductsProps) {
                 >
                   EBOOK
                 </Button>
+
+                {/* HARDCOVER */}
+
                 <Button
                   variant={"contained"}
                   color={
@@ -191,6 +276,9 @@ export default function Products(props: ProductsProps) {
                 >
                   HARDCOVER
                 </Button>
+
+                {/* PAPERBACK */}
+
                 <Button
                   variant={"contained"}
                   color={
@@ -207,10 +295,15 @@ export default function Products(props: ProductsProps) {
               </div>
             </Stack>
 
+            {/* =========================
+                PRODUCT CARDS
+                ========================= */}
+
             <Stack className={"product-wrapper"}>
               {products.length !== 0 ? (
                 products.map((product: Product) => {
                   const imagePath = `${serverApi}/${product.productImages[0]}`;
+
                   return (
                     <Stack
                       key={product._id}
@@ -219,9 +312,14 @@ export default function Products(props: ProductsProps) {
                     >
                       <Stack
                         className={"product-img"}
-                        sx={{ backgroundImage: `url(${imagePath})` }}
+                        sx={{
+                          backgroundImage: `url(${imagePath})`,
+                        }}
                       >
                         <div className={"product-sale"}>{}</div>
+
+                        {/* ADD TO CART */}
+
                         <Button
                           className={"shop-btn"}
                           onClick={(e) => {
@@ -232,14 +330,20 @@ export default function Products(props: ProductsProps) {
                               price: product.productPrice,
                               image: product.productImages[0],
                             });
+
                             e.stopPropagation();
                           }}
                         >
                           <img
                             src={"/icons/shopping-cart.svg"}
-                            style={{ display: "flex" }}
+                            style={{
+                              display: "flex",
+                            }}
                           />
                         </Button>
+
+                        {/* VIEWS */}
+
                         <Button className={"view-btn"} sx={{ right: "36px" }}>
                           <Badge
                             badgeContent={product.productViews}
@@ -254,10 +358,14 @@ export default function Products(props: ProductsProps) {
                           </Badge>
                         </Button>
                       </Stack>
+
+                      {/* PRODUCT INFORMATION */}
+
                       <Box className={"product-desc"}>
                         <span className={"product-title"}>
                           {product.productTitle}
                         </span>
+
                         <div className={"product-desc"}>
                           <MonetizationOnIcon />
                           {product.productPrice}
@@ -271,6 +379,11 @@ export default function Products(props: ProductsProps) {
               )}
             </Stack>
           </Stack>
+
+          {/* =========================
+              PAGINATION
+              ========================= */}
+
           <Stack className={"pagination-section"}>
             <Pagination
               count={Math.ceil(total / productSearch.limit)}
@@ -291,35 +404,58 @@ export default function Products(props: ProductsProps) {
         </Stack>
       </Container>
 
-      <div className={"brands-logo"}>
-        <Container className={"family-brands"}>
-          <Box className={"category-title"}>Our Family Brands</Box>
-          <Stack className={"brand-list"}>
-            <Box className={"review-box"}>
-              <img src={"/img/gurme.png"} />
-            </Box>
-            <Box className={"review-box"}>
-              <img src={"/img/seafood.png"} />
-            </Box>
-            <Box className={"review-box"}>
-              <img src={"/img/doner.png"} />
-            </Box>
-            <Box className={"review-box"}>
-              <img src={"/img/sweets.png"} />
-            </Box>
+      <div className={"recommended-books"}>
+        <Container className={"recommended-container"}>
+          <Box className={"category-title"}>You May Also Like</Box>
+
+          <Stack className={"recommended-list"}>
+            {products.slice(0, 4).map((product: Product) => {
+              const imagePath = `${serverApi}/${product.productImages[0]}`;
+
+              return (
+                <Stack
+                  key={product._id}
+                  className={"recommended-card"}
+                  onClick={() => chooseDishHandler(product._id)}
+                >
+                  <img
+                    src={imagePath}
+                    alt={product.productTitle}
+                    className={"recommended-image"}
+                  />
+
+                  <Box className={"recommended-info"}>
+                    <span className={"recommended-title"}>
+                      {product.productTitle}
+                    </span>
+
+                    <span className={"recommended-price"}>
+                      ${product.productPrice}
+                    </span>
+                  </Box>
+                </Stack>
+              );
+            })}
           </Stack>
         </Container>
       </div>
+
+      {/* =========================
+          ADDRESS
+          ========================= */}
 
       <div className={"address"}>
         <Container>
           <Stack className={"address-area"}>
             <Box className={"title"}>Our address</Box>
+
             <iframe
-              style={{ marginTop: "60px" }}
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96326.03685561026!2d28.92022666528895!3d41.02112846139867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab82bea99445f%3A0x6ed7f4baceb4476c!2sMaiden&#39;s%20Tower!5e0!3m2!1sen!2skr!4v1757106097524!5m2!1sen!2skr"
+              src="https://www.google.com/maps?q=Andijan,Uzbekistan&output=embed"
               width="1320"
               height="500"
+              style={{ border: 0, marginTop: "60px" }}
+              allowFullScreen
+              loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </Stack>

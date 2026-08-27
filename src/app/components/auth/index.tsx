@@ -3,9 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import { Fab, Stack, TextField } from "@mui/material";
-import styled from "styled-components";
-import LoginIcon from "@mui/icons-material/Login";
+import { Stack, TextField } from "@mui/material";
 import { T } from "../../../lib/types/common";
 import { Messages } from "../../../lib/config";
 import { LoginInput, MemberInput } from "../../../lib/types/member";
@@ -13,28 +11,22 @@ import MemberService from "../../services/MemberService";
 import { sweetErrorHandling } from "../../../lib/sweetAlert";
 import { useGlobals } from "../../hooks/useGlobals";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   modal: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
+
   paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 2, 2),
+    backgroundColor: "#ffffff",
+    border: "1px solid #e2e2e2",
+    borderRadius: "10px",
+    boxShadow: "0 10px 35px rgba(0, 0, 0, 0.12)",
+    padding: "35px",
+    outline: "none",
   },
 }));
-
-const ModalImg = styled.img`
-  width: 62%;
-  height: 100%;
-  border-radius: 10px;
-  background: #000;
-  margin-top: 9px;
-  margin-left: 10px;
-`;
 
 interface AuthenticationModalProps {
   signupOpen: boolean;
@@ -45,16 +37,18 @@ interface AuthenticationModalProps {
 
 export default function AuthenticationModal(props: AuthenticationModalProps) {
   const { signupOpen, loginOpen, handleSignupClose, handleLoginClose } = props;
+
   const classes = useStyles();
+
   const [memberNick, setMemberNick] = useState<string>("");
   const [memberPhone, setMemberPhone] = useState<string>("");
   const [memberPassword, setMeberPassword] = useState<string>("");
+
   const { setAuthMember } = useGlobals();
 
   /** HANDLERS **/
 
   const handleUsername = (e: T) => {
-    // console.log(e.target.value);
     setMemberNick(e.target.value);
   };
 
@@ -77,9 +71,12 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
   const handleSignupRequest = async () => {
     try {
       console.log("inputs:", memberNick, memberPhone, memberPassword);
+
       const isfulfill =
         memberNick !== "" && memberPhone !== "" && memberPassword !== "";
+
       if (!isfulfill) throw new Error(Messages.error3);
+
       const signupInput: MemberInput = {
         memberNick: memberNick,
         memberPhone: memberPhone,
@@ -87,6 +84,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
       };
 
       const member = new MemberService();
+
       const result = await member.signup(signupInput);
 
       setAuthMember(result);
@@ -101,6 +99,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
   const handleLoginpRequest = async () => {
     try {
       const isfulfill = memberNick !== "" && memberPassword !== "";
+
       if (!isfulfill) throw new Error(Messages.error3);
 
       const loginInput: LoginInput = {
@@ -109,6 +108,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
       };
 
       const member = new MemberService();
+
       const result = await member.login(loginInput);
 
       setAuthMember(result);
@@ -122,9 +122,11 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
 
   return (
     <div>
+      {/* ==================== SIGNUP MODAL ==================== */}
+
       <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
+        aria-labelledby="signup-modal-title"
+        aria-describedby="signup-modal-description"
         className={classes.modal}
         open={signupOpen}
         onClose={handleSignupClose}
@@ -137,50 +139,93 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
         <Fade in={signupOpen}>
           <Stack
             className={classes.paper}
-            direction={"row"}
-            sx={{ width: "800px" }}
+            sx={{
+              width: "380px",
+              maxWidth: "90%",
+            }}
           >
-            <ModalImg src={"/img/Auth.png"} alt="camera" />
-            <Stack sx={{ marginLeft: "69px", alignItems: "center" }}>
-              <h2>Signup Form</h2>
+            <Stack
+              sx={{
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
+              <h2
+                style={{
+                  margin: "0 0 8px",
+                  fontSize: "26px",
+                  fontWeight: 600,
+                  color: "#333",
+                }}
+              >
+                SOFIYA
+              </h2>
+
+              <p
+                style={{
+                  margin: "0 0 25px",
+                  color: "#777",
+                  fontSize: "14px",
+                }}
+              >
+                Create your account
+              </p>
+
               <TextField
-                sx={{ marginTop: "7px" }}
-                id="outlined-basic"
-                label="username"
+                fullWidth
+                label="Username"
                 variant="outlined"
                 onChange={handleUsername}
+                sx={{
+                  mb: 2,
+                }}
               />
+
               <TextField
-                sx={{ my: "17px" }}
-                id="outlined-basic"
-                label="phone number"
+                fullWidth
+                label="Phone number"
                 variant="outlined"
                 onChange={handlePhone}
+                sx={{
+                  mb: 2,
+                }}
               />
+
               <TextField
-                id="outlined-basic"
-                label="password"
+                fullWidth
+                label="Password"
                 variant="outlined"
+                type="password"
                 onChange={handlePassword}
                 onKeyDown={handlePasswordKeyDown}
               />
-              <Fab
-                sx={{ marginTop: "30px", width: "120px" }}
-                variant="extended"
-                color="primary"
+
+              <button
                 onClick={handleSignupRequest}
+                style={{
+                  width: "100%",
+                  marginTop: "24px",
+                  padding: "11px",
+                  border: "none",
+                  borderRadius: "6px",
+                  background: "#333",
+                  color: "#fff",
+                  fontSize: "15px",
+                  cursor: "pointer",
+                }}
               >
-                <LoginIcon sx={{ mr: 1 }} />
-                Signup
-              </Fab>
+                Create account
+              </button>
             </Stack>
           </Stack>
         </Fade>
       </Modal>
 
+      {/* ==================== LOGIN MODAL ==================== */}
+
       <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
+        aria-labelledby="login-modal-title"
+        aria-describedby="login-modal-description"
         className={classes.modal}
         open={loginOpen}
         onClose={handleLoginClose}
@@ -193,42 +238,73 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
         <Fade in={loginOpen}>
           <Stack
             className={classes.paper}
-            direction={"row"}
-            sx={{ width: "700px" }}
+            sx={{
+              width: "380px",
+              maxWidth: "90%",
+            }}
           >
-            <ModalImg src={"/img/Auth.png"} alt="camera" />
             <Stack
               sx={{
-                marginLeft: "65px",
-                marginTop: "25px",
                 alignItems: "center",
+                width: "100%",
               }}
             >
-              <h2>Login Form</h2>
+              <h2
+                style={{
+                  margin: "0 0 8px",
+                  fontSize: "26px",
+                  fontWeight: 600,
+                  color: "#333",
+                }}
+              >
+                SOFIYA
+              </h2>
+
+              <p
+                style={{
+                  margin: "0 0 25px",
+                  color: "#777",
+                  fontSize: "14px",
+                }}
+              >
+                Welcome back
+              </p>
+
               <TextField
-                id="outlined-basic"
-                label="username"
+                fullWidth
+                label="Username"
                 variant="outlined"
-                sx={{ my: "10px" }}
                 onChange={handleUsername}
+                sx={{
+                  mb: 2,
+                }}
               />
+
               <TextField
-                id={"outlined-basic"}
-                label={"password"}
-                variant={"outlined"}
-                type={"password"}
+                fullWidth
+                label="Password"
+                variant="outlined"
+                type="password"
                 onChange={handlePassword}
                 onKeyDown={handlePasswordKeyDown}
               />
-              <Fab
-                sx={{ marginTop: "27px", width: "120px" }}
-                variant={"extended"}
-                color={"primary"}
+
+              <button
                 onClick={handleLoginpRequest}
+                style={{
+                  width: "100%",
+                  marginTop: "24px",
+                  padding: "11px",
+                  border: "none",
+                  borderRadius: "6px",
+                  background: "#333",
+                  color: "#fff",
+                  fontSize: "15px",
+                  cursor: "pointer",
+                }}
               >
-                <LoginIcon sx={{ mr: 1 }} />
                 Login
-              </Fab>
+              </button>
             </Stack>
           </Stack>
         </Fade>

@@ -88,7 +88,7 @@ export default function ChosenProduct(props: ChosenProductProps) {
         <Stack className={"chosen-product-info"}>
           <Box className={"info-box"}>
             <strong className={"product-name"}>
-              {ChosenProduct?.productName}
+              {ChosenProduct?.productTitle}
             </strong>
             <span className={"resto-name"}>{restaurant?.memberNick}</span>
             <span className={"resto-name"}>{restaurant?.memberPhone}</span>
@@ -102,8 +102,8 @@ export default function ChosenProduct(props: ChosenProductProps) {
               </div>
             </Box>
             <p className={"product-desc"}>
-              {ChosenProduct?.productDesc
-                ? ChosenProduct?.productDesc
+              {ChosenProduct?.productDecs
+                ? ChosenProduct?.productDecs
                 : "No Description"}
             </p>
             <Divider height="1" width="100%" bg="#000000" />
@@ -118,7 +118,7 @@ export default function ChosenProduct(props: ChosenProductProps) {
                   onAdd({
                     _id: ChosenProduct._id,
                     quantity: 1,
-                    name: ChosenProduct.productName,
+                    name: ChosenProduct.productTitle,
                     price: ChosenProduct.productPrice,
                     image: ChosenProduct.productImages[0],
                   });

@@ -45,7 +45,7 @@
   .homepage .static-frame .info .static-box .static-num {
     text-align: center;
   
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 600;
@@ -57,7 +57,7 @@
   .homepage .static-frame .info .static-box .static-text {
     text-align: center;
   
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -81,6 +81,8 @@
   }
   
   .homepage .popular-dishes-frame .popular-section {
+    width: 100%;
+  
     margin-top: 45px;
   
     display: flex;
@@ -91,7 +93,7 @@
   .homepage .popular-dishes-frame .popular-section .category-title {
     text-align: center;
   
-    font-family: "Roboto Serif";
+    font-family: "Roboto Serif", serif;
     font-size: 34px;
     font-style: normal;
     font-weight: 600;
@@ -102,7 +104,12 @@
     color: #343434;
   }
   
-  .homepage .popular-dishes-frame .popular-section .cards-frame {
+  
+  /* =========================================================
+     POPULAR BOOK CARDS
+     ========================================================= */
+  
+  .homepage .popular-dishes-frame .cards-frame {
     width: 100%;
   
     margin-top: 40px;
@@ -110,42 +117,178 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-start;
+  
+    gap: 20px;
   }
   
-  .homepage .popular-dishes-frame .cards-frame .card {
-    min-height: 430px;
+  
+  /* IMPORTANT:
+     Your JSX uses "book-card", not "card"
+  */
+  
+  .homepage .popular-dishes-frame .cards-frame .book-card {
+    width: 270px;
     min-width: 270px;
+    height: 430px;
+  
+    margin: 0;
+  
+    padding: 0;
+  
+    display: flex;
+    flex-direction: column;
   
     cursor: pointer;
   
     background: #ffffff;
   
+    border: 1px solid #e5ded4;
     border-radius: 8px;
   
     overflow: hidden;
+  
+    box-sizing: border-box;
   
     transition:
       transform 0.25s ease,
       box-shadow 0.25s ease;
   }
   
-  .homepage .popular-dishes-frame .cards-frame .card:hover {
-    transform: translateY(-6px);
+  .homepage .popular-dishes-frame .cards-frame .book-card:hover {
+    transform: translateY(-5px);
   
-    box-shadow: 0 12px 28px rgba(52, 52, 52, 0.14);
-  }
-  
-  .homepage .popular-dishes-frame .cards-frame .card .card-cover {
-    background:
-      linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.55),
-        rgba(0, 0, 0, 0) 220px
-      );
+    box-shadow: 0 10px 25px rgba(52, 52, 52, 0.12);
   }
   
   
-  /* NO POPULAR BOOKS */
+  /* =========================================================
+     POPULAR BOOK COVER
+     ========================================================= */
+  
+  .homepage .popular-dishes-frame .book-card .book-cover {
+    width: 100%;
+    height: 285px;
+  
+    flex-shrink: 0;
+  
+    overflow: hidden;
+  
+    background: #eee8df;
+  }
+  
+  .homepage .popular-dishes-frame .book-card .book-cover img {
+    width: 100%;
+    height: 100%;
+  
+    display: block;
+  
+    object-fit: cover;
+  }
+  
+  
+  /* =========================================================
+     POPULAR BOOK INFORMATION
+     ========================================================= */
+  
+  .homepage .popular-dishes-frame .book-card .book-info {
+    width: 100%;
+    height: 145px;
+  
+    padding: 14px 16px;
+  
+    display: flex;
+    flex-direction: column;
+  
+    box-sizing: border-box;
+  }
+  
+  
+  /* TITLE */
+  
+  .homepage .popular-dishes-frame .book-card .book-title {
+    width: 100%;
+  
+    margin: 0;
+  
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+  
+    line-height: 22px;
+  
+    color: #343434;
+  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  
+  /* DESCRIPTION */
+  
+  .homepage .popular-dishes-frame .book-card .book-description {
+    width: 100%;
+  
+    margin-top: 6px;
+  
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+  
+    line-height: 18px;
+  
+    color: #77716a;
+  
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  
+    overflow: hidden;
+  }
+  
+  
+  /* BOTTOM */
+  
+  .homepage .popular-dishes-frame .book-card .book-bottom {
+    width: 100%;
+  
+    margin-top: auto;
+  }
+  
+  
+  /* PRICE */
+  
+  .homepage .popular-dishes-frame .book-card .book-price {
+    margin: 0;
+  
+    font-family: "Poppins", sans-serif;
+  
+    font-size: 16px;
+    font-weight: 600;
+  
+    color: #9b743e;
+  }
+  
+  
+  /* VIEWS */
+  
+  .homepage .popular-dishes-frame .book-card .book-views {
+    display: flex;
+    align-items: center;
+  
+    font-family: "Poppins", sans-serif;
+  
+    font-size: 12px;
+    font-weight: 500;
+  
+    color: #77716a;
+  }
+  
+  
+  /* =========================================================
+     NO POPULAR BOOKS
+     ========================================================= */
   
   .homepage .popular-dishes-frame .no-data {
     width: 100%;
@@ -155,14 +298,10 @@
     justify-content: center;
     align-items: center;
   
-    text-transform: capitalize;
-  
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 400;
+    font-family: "Poppins", sans-serif;
   
     font-size: 22px;
-    line-height: 34px;
+    font-weight: 400;
   
     color: #9b743e;
   }
@@ -181,7 +320,9 @@
     background: #fffdf9;
   }
   
-  .homepage .main {
+  .homepage .new-products-frame .main {
+    width: 100%;
+  
     margin-top: 45px;
   
     display: flex;
@@ -190,40 +331,57 @@
   }
   
   .homepage .new-products-frame .category-title {
-    font-family: "Roboto Serif";
-  
-    font-style: normal;
-    font-weight: 600;
+    font-family: "Roboto Serif", serif;
   
     font-size: 34px;
+    font-weight: 600;
     line-height: 43px;
   
     color: #343434;
   }
   
+  
+  /* =========================================================
+     NEW ARRIVALS CARDS
+     ========================================================= */
+  
   .homepage .new-products-frame .main .cards-frame {
     width: 100%;
   
-    margin: 42px 2px 2px 2px;
+    margin-top: 42px;
   
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-start;
+  
+    gap: 20px;
   }
   
+  
+  /* CARD */
+  
   .homepage .new-products-frame .main .card {
-    height: 335px;
     width: 270px;
+    min-width: 270px;
+    height: 390px;
+  
+    margin: 0;
+    padding: 0;
+  
+    display: flex;
+    flex-direction: column;
   
     cursor: pointer;
   
     background: #ffffff;
   
     border: 1px solid #e5ded4;
-  
     border-radius: 8px;
   
     overflow: hidden;
+  
+    box-sizing: border-box;
   
     transition:
       transform 0.25s ease,
@@ -237,109 +395,169 @@
   }
   
   
-  /* SALE LABEL */
-/*   
-  .homepage .new-products-frame .product-sale {
-    position: absolute;
+  /* =========================================================
+     NEW ARRIVAL IMAGE
+     ========================================================= */
   
-    margin-top: 10px;
-    margin-left: 10px;
+  /*
+     AspectRatio is used in your JSX.
+     This forces it to behave like a book-cover area
+     instead of becoming an uncontrolled large image.
+  */
   
-    z-index: 100;
+  .homepage .new-products-frame .main .card > .MuiCardOverflow-root:first-child {
+    width: 100%;
+    height: 275px;
   
-    width: 75px;
-    height: 28px;
+    flex-shrink: 0;
   
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    background: #343434;
-  
-    border-radius: 4px;
-  
-    font-family: "Poppins";
-  
-    font-style: normal;
-    font-weight: 600;
-  
-    font-size: 11px;
-    line-height: 20px;
-  
-    color: #d7b686;
-  } */
+    overflow: hidden;
+  }
   
   
-  /* PRODUCT DETAILS */
+  /* AspectRatio itself */
+  
+  .homepage .new-products-frame .main .card .MuiAspectRatio-root {
+    width: 100% !important;
+    height: 275px !important;
+  
+    min-height: 275px !important;
+  
+    overflow: hidden;
+  }
+  
+  
+  /* IMAGE */
+  
+  .homepage .new-products-frame .main .card .MuiAspectRatio-root img {
+    width: 100% !important;
+    height: 100% !important;
+  
+    object-fit: cover !important;
+  
+    display: block;
+  }
+  
+  
+  /* =========================================================
+     NEW ARRIVAL INFORMATION
+     ========================================================= */
   
   .homepage .new-products-frame .product-detail {
-    width: auto;
-    height: 49%;
+    width: 100%;
+  
+    height: 115px;
+  
+    margin: 0;
+  
+    padding: 12px;
   
     display: flex;
     justify-content: center;
   
-    margin-top: -12px;
+    box-sizing: border-box;
   
     border-top: 1px solid #eee7dd;
   
     background: #ffffff;
   }
   
+  
+  /* INFO */
+  
   .homepage .new-products-frame .product-detail .info {
     width: 100%;
+    height: 100%;
   
-    padding: 0 12px;
+    padding: 0;
+  
+    display: flex;
+    flex-direction: column;
+  
+    justify-content: space-between;
+  }
+  
+  
+  /* TITLE / PRICE ROW */
+  
+  .homepage .new-products-frame .product-detail .info > .MuiStack-root:first-child {
+    width: 100%;
   
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+  
     align-items: center;
   }
   
+  
+  /* TITLE */
+  
   .homepage .new-products-frame .product-detail .title {
-    width: 100px;
+    width: auto;
+    max-width: 145px;
   
-    font-family: "Poppins";
+    margin: 0;
   
+    font-family: "Poppins", sans-serif;
+  
+    font-size: 14px;
     font-weight: 500;
   
     color: #343434;
+  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   
+  
+  /* PRICE */
+  
   .homepage .new-products-frame .product-detail .price {
-    margin-left: 10px;
+    margin-left: 8px;
   
     width: auto;
   
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
   
+    font-size: 14px;
     font-weight: 600;
   
     color: #9b743e;
+  
+    white-space: nowrap;
   }
   
+  
+  /* DIVIDER */
+  
   .homepage .new-products-frame .product-detail .divider {
-    margin: 0 10px;
+    margin: 0 8px;
   
     width: 1px;
   
     background-color: #ddd4c7;
   }
   
+  
+  /* VIEWS */
+  
   .homepage .new-products-frame .product-detail .views {
     display: flex;
     align-items: center;
   
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
   
+    font-size: 12px;
     font-weight: 500;
   
     color: #77716a;
   }
   
   
-  /* NO NEW BOOKS */
+  /* =========================================================
+     NO NEW ARRIVALS
+     ========================================================= */
   
   .homepage .new-products-frame .no-data {
     width: 100%;
@@ -349,15 +567,10 @@
     justify-content: center;
     align-items: center;
   
-    text-transform: capitalize;
-  
-    font-family: "Poppins";
-  
-    font-style: normal;
-    font-weight: 400;
+    font-family: "Poppins", sans-serif;
   
     font-size: 22px;
-    line-height: 34px;
+    font-weight: 400;
   
     color: #9b743e;
   }
@@ -367,92 +580,75 @@
      BOOKSTORE PROMOTION / VIDEO
      ========================================================= */
   
- /* =========================================================
-   SOFIYA - BOOKSTORE FEATURE / VIDEO SECTION
-   ========================================================= */
-
-.homepage .ads-restaurant-frame {
-  width: 100%;
-  height: 520px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  overflow: hidden;
-
-  background: #efe8dc;
-
-  position: relative;
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 -1px 0 rgba(52, 52, 52, 0.08);
-}
-
-
-/* Soft decorative background */
-
-.homepage .ads-restaurant-frame::before {
-  content: "";
-
-  position: absolute;
-
-  width: 420px;
-  height: 420px;
-
-  left: -180px;
-  top: 50%;
-
-  transform: translateY(-50%);
-
-  border-radius: 50%;
-
-  background: rgba(215, 182, 134, 0.18);
-}
-
-
-/* Second decorative circle */
-
-.homepage .ads-restaurant-frame::after {
-  content: "";
-
-  position: absolute;
-
-  width: 300px;
-  height: 300px;
-
-  right: -120px;
-  bottom: -150px;
-
-  border-radius: 50%;
-
-  background: rgba(215, 182, 134, 0.15);
-}
-
-
-/* Video */
-
-.homepage .ads-restaurant-frame .ads-video {
-  width: 82%;
-  height: 400px;
-
-  display: flex;
-
-  position: relative;
-  z-index: 2;
-
-  background: #343434;
-
-  overflow: hidden;
-
-  border-radius: 12px;
-
-  box-shadow:
-    0 18px 45px rgba(52, 52, 52, 0.22);
-
-  transform: none;
-}
+  .homepage .ads-restaurant-frame {
+    width: 100%;
+    height: 520px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    overflow: hidden;
+  
+    background: #efe8dc;
+  
+    position: relative;
+  }
+  
+  .homepage .ads-restaurant-frame::before {
+    content: "";
+  
+    position: absolute;
+  
+    width: 420px;
+    height: 420px;
+  
+    left: -180px;
+    top: 50%;
+  
+    transform: translateY(-50%);
+  
+    border-radius: 50%;
+  
+    background: rgba(215, 182, 134, 0.18);
+  }
+  
+  .homepage .ads-restaurant-frame::after {
+    content: "";
+  
+    position: absolute;
+  
+    width: 300px;
+    height: 300px;
+  
+    right: -120px;
+    bottom: -150px;
+  
+    border-radius: 50%;
+  
+    background: rgba(215, 182, 134, 0.15);
+  }
+  
+  .homepage .ads-restaurant-frame .ads-video {
+    width: 82%;
+    height: 400px;
+  
+    display: flex;
+  
+    position: relative;
+  
+    z-index: 2;
+  
+    background: #343434;
+  
+    overflow: hidden;
+  
+    border-radius: 12px;
+  
+    box-shadow: 0 18px 45px rgba(52, 52, 52, 0.22);
+  }
+  
+  
   /* =========================================================
      BOOK COMMUNITY
      ========================================================= */
@@ -475,21 +671,19 @@
   }
   
   .homepage .active-users-frame .category-title {
-    font-family: "Roboto Serif";
-  
-    font-style: normal;
-    font-weight: 600;
+    font-family: "Roboto Serif", serif;
   
     font-size: 34px;
+    font-weight: 600;
     line-height: 43px;
   
     color: #343434;
   }
   
   
-  /* GENERAL CARDS */
+  /* GENERAL COMMUNITY CARDS */
   
-  .homepage .cards-frame {
+  .homepage .active-users-frame .cards-frame {
     width: 100%;
   
     margin-top: 20px;
@@ -498,7 +692,7 @@
     flex-direction: row;
   }
   
-  .homepage .cards-frame .card {
+  .homepage .active-users-frame .cards-frame .card {
     margin: 5px;
   
     min-height: 305px;
@@ -513,8 +707,8 @@
     background: #ffffff;
   }
   
-  .homepage .cards-frame .member-nickname {
-    font-family: "Poppins";
+  .homepage .active-users-frame .cards-frame .member-nickname {
+    font-family: "Poppins", sans-serif;
   
     font-size: medium;
   
@@ -526,7 +720,7 @@
   
   /* NO USERS */
   
-  .homepage .cards-frame .no-data {
+  .homepage .active-users-frame .cards-frame .no-data {
     width: 100%;
     height: 300px;
   
@@ -535,15 +729,9 @@
     justify-content: center;
     align-items: center;
   
-    text-transform: capitalize;
-  
-    font-family: "Poppins";
-  
-    font-style: normal;
-    font-weight: 400;
+    font-family: "Poppins", sans-serif;
   
     font-size: 22px;
-    line-height: 34px;
   
     color: #9b743e;
   }
@@ -565,12 +753,10 @@
   .homepage .events-frame .category-title {
     padding-top: 20px;
   
-    font-family: "Roboto Serif";
-  
-    font-style: normal;
-    font-weight: 600;
+    font-family: "Roboto Serif", serif;
   
     font-size: 34px;
+    font-weight: 600;
     line-height: 43px;
   
     color: #343434;
@@ -684,8 +870,7 @@
   
     background: #ffffff;
   
-    box-shadow:
-      0 10px 25px rgba(52, 52, 52, 0.12);
+    box-shadow: 0 10px 25px rgba(52, 52, 52, 0.12);
   
     border-radius: 8px;
   }
@@ -732,9 +917,7 @@
   }
   
   .homepage .events-frame .event-organizator .spec-text-author {
-    font-family: "Poppins";
-  
-    font-style: normal;
+    font-family: "Poppins", sans-serif;
   
     line-height: 28px;
   
@@ -744,12 +927,11 @@
   .homepage .events-frame .bott-left .text-desc {
     margin-top: 10px;
   
-    font-family: "Poppins";
-  
-    font-style: normal;
-    font-weight: 400;
+    font-family: "Poppins", sans-serif;
   
     font-size: 14px;
+    font-weight: 400;
+  
     line-height: 23px;
   
     color: #77716a;
@@ -783,12 +965,11 @@
     width: auto;
     height: 100%;
   
-    font-family: "Poppins";
-  
-    font-style: normal;
-    font-weight: 400;
+    font-family: "Poppins", sans-serif;
   
     font-size: 13px;
+    font-weight: 400;
+  
     line-height: 16px;
   
     color: #77716a;
@@ -805,6 +986,7 @@
   
   .homepage .events-frame .swiper-wrapper {
     display: flex;
+  
     flex-direction: row;
   }
   
@@ -827,4 +1009,192 @@
     background: #343434;
   
     border-radius: 50%;
+  }
+  
+  
+  /* =========================================================
+     RESPONSIVE
+     ========================================================= */
+  
+  @media screen and (max-width: 1200px) {
+  
+    .homepage .popular-dishes-frame .cards-frame,
+    .homepage .new-products-frame .main .cards-frame {
+      justify-content: center;
+  
+      flex-wrap: wrap;
+    }
+  
+    .homepage .popular-dishes-frame,
+    .homepage .new-products-frame {
+      height: auto;
+  
+      min-height: 580px;
+  
+      padding-bottom: 40px;
+    }
+  
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+  
+    .homepage .static-frame {
+      height: 150px;
+    }
+  
+    .homepage .static-frame .info {
+      flex-wrap: wrap;
+    }
+  
+    .homepage .static-frame .info .static-box {
+      width: 120px;
+    }
+  
+    .homepage .static-frame .info .static-box .static-num {
+      font-size: 26px;
+    }
+  
+    .homepage .static-frame .info .static-box .static-text {
+      font-size: 12px;
+    }
+  
+  
+    /* POPULAR */
+  
+    .homepage .popular-dishes-frame {
+      height: auto;
+  
+      padding-bottom: 50px;
+    }
+  
+    .homepage .popular-dishes-frame .popular-section {
+      margin-top: 35px;
+    }
+  
+    .homepage .popular-dishes-frame .popular-section .category-title,
+    .homepage .new-products-frame .category-title {
+      font-size: 28px;
+    }
+  
+    .homepage .popular-dishes-frame .cards-frame {
+      margin-top: 30px;
+  
+      display: grid;
+  
+      grid-template-columns: repeat(2, 270px);
+  
+      justify-content: center;
+  
+      gap: 20px;
+    }
+  
+  
+    /* NEW ARRIVALS */
+  
+    .homepage .new-products-frame {
+      height: auto;
+  
+      padding-bottom: 50px;
+    }
+  
+    .homepage .new-products-frame .main {
+      margin-top: 35px;
+    }
+  
+    .homepage .new-products-frame .main .cards-frame {
+      margin-top: 30px;
+  
+      display: grid;
+  
+      grid-template-columns: repeat(2, 270px);
+  
+      justify-content: center;
+  
+      gap: 20px;
+    }
+  
+  
+    /* VIDEO */
+  
+    .homepage .ads-restaurant-frame {
+      height: 400px;
+    }
+  
+    .homepage .ads-restaurant-frame .ads-video {
+      width: 90%;
+      height: 300px;
+    }
+  
+  
+    /* COMMUNITY */
+  
+    .homepage .active-users-frame {
+      height: auto;
+  
+      min-height: 500px;
+    }
+  
+  
+    /* EVENTS */
+  
+    .homepage .events-frame {
+      height: auto;
+  
+      min-height: 600px;
+    }
+  }
+  
+  
+  @media screen and (max-width: 600px) {
+  
+    .homepage .popular-dishes-frame .cards-frame,
+    .homepage .new-products-frame .main .cards-frame {
+      grid-template-columns: 270px;
+    }
+  
+    .homepage .popular-dishes-frame .cards-frame .book-card,
+    .homepage .new-products-frame .main .card {
+      width: 270px;
+      min-width: 270px;
+    }
+  
+  }
+  
+  
+  @media screen and (max-width: 480px) {
+  
+    .homepage .static-frame {
+      height: auto;
+  
+      padding: 20px 0;
+    }
+  
+    .homepage .static-frame .info .static-box {
+      width: 100px;
+    }
+  
+    .homepage .static-frame .info .static-box .static-num {
+      font-size: 23px;
+    }
+  
+    .homepage .static-frame .info .static-box .static-text {
+      font-size: 11px;
+    }
+  
+    .homepage .popular-dishes-frame .popular-section .category-title,
+    .homepage .new-products-frame .category-title {
+      font-size: 25px;
+    }
+  
+    .homepage .ads-restaurant-frame {
+      height: 300px;
+    }
+  
+    .homepage .ads-restaurant-frame .ads-video {
+      width: 94%;
+      height: 220px;
+  
+      border-radius: 8px;
+    }
   }

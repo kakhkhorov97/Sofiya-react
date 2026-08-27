@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Statistics from "./Statistics";
 import PopularDishes from "./PopularDishes";
-import NewDishes from "./NewDishes";
 import Advertisement from "./Advertisement";
 import ActiveUsers from "./ActiveUsers";
 import Events from "./Events";
@@ -14,6 +13,7 @@ import MemberService from "../../services/MemberService";
 import { Member } from "../../../lib/types/member";
 import "../../../css/home.css";
 import { ProductFormat } from "../../../lib/enums/product.enum";
+import NewDishes from "./NewDishes";
 
 /** REDUX SLICE & SELECTOR */
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -42,7 +42,7 @@ export default function HomePage() {
       })
       .then((data) => {
         console.log("data:", data);
-        setPopularDishes(data);
+        setPopularDishes(data.products);
       })
       .catch((err) => console.log(err));
 
@@ -54,7 +54,7 @@ export default function HomePage() {
         productFormat: ProductFormat.HARDCOVER,
       })
       .then((data) => {
-        setNewDishes(data);
+        setNewDishes(data.products);
       })
       .catch((err) => console.log(err));
 
