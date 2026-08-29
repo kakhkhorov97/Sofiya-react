@@ -52,13 +52,8 @@ export default function Products(props: ProductsProps) {
 
   const history = useHistory();
 
-  /* =========================
-     GET PRODUCTS
-     ========================= */
-
   useEffect(() => {
     const product = new ProductService();
-
     product
       .getProducts(productSearch)
       .then((data) => {
@@ -70,10 +65,6 @@ export default function Products(props: ProductsProps) {
       });
   }, [productSearch]);
 
-  /* =========================
-     CLEAR SEARCH
-     ========================= */
-
   useEffect(() => {
     if (searchText === "") {
       setProductSearch((prev) => ({
@@ -83,10 +74,6 @@ export default function Products(props: ProductsProps) {
       }));
     }
   }, [searchText]);
-
-  /* =========================
-     HANDLERS
-     ========================= */
 
   // FORMAT FILTER
   // Selecting a format clears the genre.
@@ -132,18 +119,10 @@ export default function Products(props: ProductsProps) {
     history.push(`/products/${id}`);
   };
 
-  /* =========================
-     RENDER
-     ========================= */
-
   return (
     <div className={"products"}>
       <Container>
         <Stack flexDirection={"column"} alignItems={"center"}>
-          {/* =========================
-              SEARCH
-              ========================= */}
-
           <Stack className={"avatar-big-box"}>
             <Stack className={"top-text"}>
               <p></p>
@@ -175,10 +154,6 @@ export default function Products(props: ProductsProps) {
             </Stack>
           </Stack>
 
-          {/* =========================
-              GENRE FILTER
-              ========================= */}
-
           <Stack className={"genre-filter-section"}>
             <Stack className={"genre-filter-box"}>
               {/* ALL BOOKS */}
@@ -204,8 +179,6 @@ export default function Products(props: ProductsProps) {
                 ALL BOOKS
               </Button>
 
-              {/* GENRES */}
-
               {Object.values(ProductGenre).map((genre) => (
                 <Button
                   key={genre}
@@ -224,15 +197,9 @@ export default function Products(props: ProductsProps) {
             </Stack>
           </Stack>
 
-          {/* =========================
-              BOOK FORMAT FILTER
-              ========================= */}
-
           <Stack className={"list-category-section"}>
             <Stack className={"product-category"}>
               <div className={"category-main"}>
-                {/* AUDIOBOOK */}
-
                 <Button
                   variant={"contained"}
                   color={
@@ -295,10 +262,6 @@ export default function Products(props: ProductsProps) {
               </div>
             </Stack>
 
-            {/* =========================
-                PRODUCT CARDS
-                ========================= */}
-
             <Stack className={"product-wrapper"}>
               {products.length !== 0 ? (
                 products.map((product: Product) => {
@@ -317,8 +280,6 @@ export default function Products(props: ProductsProps) {
                         }}
                       >
                         <div className={"product-sale"}>{}</div>
-
-                        {/* ADD TO CART */}
 
                         <Button
                           className={"shop-btn"}

@@ -21,6 +21,7 @@ import {
   sweetErrorHandling,
   sweetTopSmallSuccessAlert,
 } from "../lib/ToastHandling";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const location = useLocation();
@@ -86,6 +87,7 @@ function App() {
           handleLogoutRequest={handleLogoutRequest}
         />
       )}
+      <ScrollToTop />
       <Switch>
         <Route path="/products">
           <ProductsPage onAdd={onAdd} />
