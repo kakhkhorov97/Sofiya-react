@@ -54,16 +54,15 @@ export default function HomeNavbar(props: HomeNavbarProps) {
             <NavLink to="/">
               <img
                 className="brand-logo"
-                src="/icons/sofiya.svg"
+                src="/icons/Sofiya-main.png"
                 alt="Sofiya"
               />
             </NavLink>
           </Box>
 
-          {/* NAVIGATION */}
           <Stack className="links">
             <Box className={"hover-line"}>
-              <NavLink to="/" activeClassName={"underline"}>
+              <NavLink exact to="/" activeClassName={"underline"}>
                 Home
               </NavLink>
             </Box>
@@ -96,7 +95,6 @@ export default function HomeNavbar(props: HomeNavbarProps) {
               </NavLink>
             </Box>
 
-            {/* BASKET */}
             <Basket
               cartItems={cartItems}
               onAdd={onAdd}
@@ -105,7 +103,6 @@ export default function HomeNavbar(props: HomeNavbarProps) {
               onDeleteAll={onDeleteAll}
             />
 
-            {/* LOGIN / USER */}
             {!authMember ? (
               <Box>
                 <Button
@@ -130,7 +127,6 @@ export default function HomeNavbar(props: HomeNavbarProps) {
               />
             )}
 
-            {/* LOGOUT MENU */}
             <Menu
               anchorEl={anchorEl}
               id="account-menu"

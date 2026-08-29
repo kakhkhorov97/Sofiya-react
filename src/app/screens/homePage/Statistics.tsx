@@ -1,36 +1,58 @@
 import React from "react";
 import { Box, Container, Stack } from "@mui/material";
 import Divider from "../../components/divider";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import HeadphonesIcon from "@mui/icons-material/Headphones";
+import ExploreIcon from "@mui/icons-material/Explore";
 
 export default function Statistics() {
   return (
-    <div className={"static-frame"}>
+    <div className="why-choose-section">
       <Container>
-        <Stack className="info">
-          <Stack className="static-box">
-            <Box className="static-num">500+</Box>
-            <Box className="static-text">Books</Box>
-          </Stack>
+        <Stack className="why-choose-container">
+          <Stack className="why-choose-list">
+            <Box className="why-choose-card">
+              <MenuBookIcon id="menu-book-icon" />
 
-          <Divider height="64" width="2" bg="#E3C08D" />
+              <div className="why-choose-text">
+                <h3>Curated Collection</h3>
+                <p>Handpicked books for every kind of reader.</p>
+              </div>
+            </Box>
 
-          <Stack className="static-box">
-            <Box className="static-num">20+</Box>
-            <Box className="static-text">Genres</Box>
-          </Stack>
+            <Divider height="64" width="2" bg="#E3C08D" />
 
-          <Divider height="64" width="2" bg="#E3C08D" />
+            <Box className="why-choose-card">
+              <ShoppingCartIcon id="shopping-cart-icon" />
 
-          <Stack className="static-box">
-            <Box className="static-num">100+</Box>
-            <Box className="static-text">E-Books</Box>
-          </Stack>
+              <div className="why-choose-text">
+                <h3>Fast & Reliable</h3>
+                <p>Enjoy quick and secure delivery to your door.</p>
+              </div>
+            </Box>
 
-          <Divider height="64" width="2" bg="#E3C08D" />
+            <Divider height="64" width="2" bg="#E3C08D" />
 
-          <Stack className="static-box">
-            <Box className="static-num">1K+</Box>
-            <Box className="static-text">Readers</Box>
+            <Box className="why-choose-card">
+              <HeadphonesIcon id="headphones-icon" />
+
+              <div className="why-choose-text">
+                <h3>Read Your Way</h3>
+                <p>Choose from books, e-books, and audiobooks.</p>
+              </div>
+            </Box>
+
+            <Divider height="64" width="2" bg="#E3C08D" />
+
+            <Box className="why-choose-card">
+              <ExploreIcon id="explore-icon" />
+
+              <div className="why-choose-text">
+                <h3>Discover More</h3>
+                <p>Explore new genres and find your next great read.</p>
+              </div>
+            </Box>
           </Stack>
         </Stack>
       </Container>

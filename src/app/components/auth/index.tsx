@@ -8,8 +8,8 @@ import { T } from "../../../lib/types/common";
 import { Messages } from "../../../lib/config";
 import { LoginInput, MemberInput } from "../../../lib/types/member";
 import MemberService from "../../services/MemberService";
-import { sweetErrorHandling } from "../../../lib/sweetAlert";
 import { useGlobals } from "../../hooks/useGlobals";
+import { sweetErrorHandling } from "../../../lib/ToastHandling";
 
 const useStyles = makeStyles(() => ({
   modal: {

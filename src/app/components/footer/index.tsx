@@ -20,7 +20,7 @@ export default function Footer() {
         <Stack flexDirection={"row"} sx={{ mt: "94px" }}>
           <Stack flexDirection={"column"} style={{ width: "340px" }}>
             <Box>
-              <img width={"100px"} src={"/icons/sofiya.png"} />
+              <img width={"100px"} src={"/icons/Sofiya-main.png"} />
             </Box>
             <Box className={"foot-desc-txt"}>
               Sofiya is an online bookstore offering a wide selection of books,
@@ -38,7 +38,7 @@ export default function Footer() {
           <Stack sx={{ ml: "288px" }} flexDirection={"row"}>
             <Stack>
               <Box>
-                <Box className={"foot-category-title"}>Bo'limlar</Box>
+                <Box className={"foot-category-title"}>Menu</Box>
                 <Box className={"foot-category-link"}>
                   <Link to="/">Home</Link>
                   <Link to="/products">Products</Link>

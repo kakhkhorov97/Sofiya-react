@@ -11,7 +11,7 @@
       rgba(30, 28, 25, 0.88) 45%,
       rgba(30, 28, 25, 0.65) 100%
     ),
-    url("/public/img/banner.webp");
+    url("/public/img/banner-sofiya.webp");
   background-size: cover;
   background-position: center;
 }
@@ -242,7 +242,7 @@
       rgba(30, 28, 25, 0.96),
       rgba(30, 28, 25, 0.88)
     ),
-    url("/public/img/banner.webp");
+    url("/public/img/banner-sofiya.webp");
 
   background-size: cover;
   background-position: center;

@@ -5,12 +5,13 @@ import { useGlobals } from "../../hooks/useGlobals";
 import { MemberUpdateInput } from "../../../lib/types/member";
 import { useState } from "react";
 import { T } from "../../../lib/types/common";
+
+import { Messages, serverApi } from "../../../lib/config";
+import MemberService from "../../services/MemberService";
 import {
   sweetErrorHandling,
   sweetTopSmallSuccessAlert,
-} from "../../../lib/sweetAlert";
-import { Messages, serverApi } from "../../../lib/config";
-import MemberService from "../../services/MemberService";
+} from "../../../lib/ToastHandling";
 
 export function Settings() {
   const { authMember, setAuthMember } = useGlobals();
@@ -71,7 +72,7 @@ export function Settings() {
 
       setAuthMember(result);
 
-      await sweetTopSmallSuccessAlert("Modified successfully!", 700);
+      await sweetTopSmallSuccessAlert("Modified successfully!", 2000);
     } catch (err) {
       console.log(err);
       sweetErrorHandling(err).then();
@@ -98,7 +99,7 @@ export function Settings() {
   return (
     <Box className={"settings"}>
       <Box className={"member-media-frame"}>
-        <img src={memberImage} className={"mb-image"} />
+        <img src={memberImage} className={"mb-image"} alt="img" />
         <div className={"media-change-box"}>
           <span>Upload image</span>
           <p>JPG, JPEG, PNG formats only!</p>

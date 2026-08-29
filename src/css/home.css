@@ -1,6 +1,4 @@
-/* =========================================================
-   SOFIYA BOOKSTORE - HOMEPAGE
-   ========================================================= */
+/* SOFIYA BOOKSTORE - HOMEPAGE */
 
    .homepage {
     width: 100%;
@@ -9,67 +7,64 @@
   }
   
   
-  /* =========================================================
-     STATISTICS
-     ========================================================= */
-  
-  .homepage .static-frame {
+/* WHY CHOOSE SOFIYA */
+
+   .homepage .why-choose-section {
     width: 100%;
-    height: 170px;
-  
-    display: flex;
-    align-items: center;
-  
-    background: #343434;
+    padding: 40px 0;
+    background: #353535;
   }
   
-  .homepage .static-frame .info {
-    height: 100%;
-  
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  .homepage .why-choose-container {
+    width: 100%;
     align-items: center;
   }
   
-  .homepage .static-frame .info .static-box {
-    width: 160px;
-    height: 90px;
-  
-    display: flex;
-    flex-direction: column;
+  .homepage .why-choose-list {
+    width: 100%;
+    flex-direction: row !important;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
   }
   
-  .homepage .static-frame .info .static-box .static-num {
-    text-align: center;
+  .homepage .why-choose-card {
+    flex: 1;
+    min-width: 0;
+    padding: 0 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .homepage .why-choose-card svg {
+    width: 38px;
+    height: 38px;
+    color: #e3c99a;
+    flex-shrink: 0;
+  }
   
-    font-family: "Poppins", sans-serif;
-    font-size: 32px;
-    font-style: normal;
+  .homepage .why-choose-text {
+    min-width: 0;
+  }
+  
+  .homepage .why-choose-card h3 {
+    margin: 0 0 5px;
+    color: #e3c99a;
+    font-family: "Times New Roman", serif;
+    font-size: 18px;
     font-weight: 600;
-    line-height: 40px;
-  
-    color: #d7b686;
+    white-space: nowrap;
   }
   
-  .homepage .static-frame .info .static-box .static-text {
-    text-align: center;
-  
-    font-family: "Poppins", sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 22px;
-  
-    color: #c5c8c9;
+  .homepage .why-choose-card p {
+    margin: 0;
+    color: #c2c2c2;
+    font-size: 13px;
+    line-height: 1.4;
   }
-  
-  
-  /* =========================================================
+  /* 
      POPULAR BOOKS
-     ========================================================= */
+      */
   
   .homepage .popular-dishes-frame {
     width: 100%;
@@ -105,9 +100,9 @@
   }
   
   
-  /* =========================================================
+  /* 
      POPULAR BOOK CARDS
-     ========================================================= */
+      */
   
   .homepage .popular-dishes-frame .cards-frame {
     width: 100%;
@@ -306,46 +301,46 @@
     color: #9b743e;
   }
   
-  
   /* =========================================================
-     NEW ARRIVALS
-     ========================================================= */
-  
-  .homepage .new-products-frame {
-    width: 100%;
-    height: 605px;
-  
-    display: flex;
-  
-    background: #fffdf9;
-  }
-  
-  .homepage .new-products-frame .main {
-    width: 100%;
-  
-    margin-top: 45px;
-  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .homepage .new-products-frame .category-title {
-    font-family: "Roboto Serif", serif;
-  
-    font-size: 34px;
-    font-weight: 600;
-    line-height: 43px;
-  
-    color: #343434;
-  }
-  
-  
-  /* =========================================================
-     NEW ARRIVALS CARDS
-     ========================================================= */
-  
-  .homepage .new-products-frame .main .cards-frame {
+   NEW ARRIVALS
+   SAME CARD STYLE AS POPULAR BOOKS
+   ========================================================= */
+
+.homepage .new-products-frame {
+  width: 100%;
+  height: 605px;
+
+  display: flex;
+
+  background: #fffdf9;
+}
+
+.homepage .new-products-frame .main {
+  width: 100%;
+
+  margin-top: 45px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.homepage .new-products-frame .category-title {
+  font-family: "Roboto Serif", serif;
+
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 43px;
+
+  color: #343434;
+}
+
+
+/* =========================================================
+   NEW ARRIVALS CARDS FRAME
+   ========================================================= */
+
+   .homepage .new-products-frame .main .cards-frame {
     width: 100%;
   
     margin-top: 42px;
@@ -359,12 +354,15 @@
   }
   
   
-  /* CARD */
+  /* =========================================================
+     NEW ARRIVAL CARD
+     SAME SIZE / STYLE AS POPULAR BOOK CARD
+     ========================================================= */
   
   .homepage .new-products-frame .main .card {
     width: 270px;
     min-width: 270px;
-    height: 390px;
+    height: 430px;
   
     margin: 0;
     padding: 0;
@@ -388,6 +386,9 @@
       box-shadow 0.25s ease;
   }
   
+  
+  /* HOVER */
+  
   .homepage .new-products-frame .main .card:hover {
     transform: translateY(-5px);
   
@@ -396,46 +397,75 @@
   
   
   /* =========================================================
-     NEW ARRIVAL IMAGE
+     NEW ARRIVAL BOOK IMAGE
      ========================================================= */
   
   /*
-     AspectRatio is used in your JSX.
-     This forces it to behave like a book-cover area
-     instead of becoming an uncontrolled large image.
+     Keep the image area exactly like Popular Books:
+     270px wide × 285px high.
   */
   
-  .homepage .new-products-frame .main .card > .MuiCardOverflow-root:first-child {
+  .homepage .new-products-frame .main .card
+    > .MuiCardOverflow-root:first-child {
     width: 100%;
-    height: 275px;
+    height: 285px;
+    min-height: 285px;
+    max-height: 285px;
+  
+    padding: 0;
+    margin: 0;
   
     flex-shrink: 0;
   
     overflow: hidden;
+  
+    background: #eee8df;
+  
+    box-sizing: border-box;
   }
   
   
-  /* AspectRatio itself */
+  /* AspectRatio */
   
-  .homepage .new-products-frame .main .card .MuiAspectRatio-root {
+  .homepage .new-products-frame .main .card
+    .MuiAspectRatio-root {
     width: 100% !important;
-    height: 275px !important;
+    height: 285px !important;
   
-    min-height: 275px !important;
+    min-height: 285px !important;
+    max-height: 285px !important;
   
-    overflow: hidden;
+    padding: 0 !important;
+    margin: 0 !important;
+  
+    overflow: hidden !important;
+  
+    box-sizing: border-box;
   }
   
   
   /* IMAGE */
   
-  .homepage .new-products-frame .main .card .MuiAspectRatio-root img {
+  .homepage .new-products-frame .main .card
+    .MuiAspectRatio-root img {
     width: 100% !important;
     height: 100% !important;
   
-    object-fit: cover !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+  
+    max-width: 100% !important;
+    max-height: 100% !important;
   
     display: block;
+  
+    object-fit: cover !important;
+    object-position: center center !important;
+  
+    margin: 0 !important;
+    padding: 0 !important;
+  
+    box-sizing: border-box;
   }
   
   
@@ -443,17 +473,16 @@
      NEW ARRIVAL INFORMATION
      ========================================================= */
   
-  .homepage .new-products-frame .product-detail {
+  .homepage .new-products-frame .main .product-detail {
     width: 100%;
-  
-    height: 115px;
+    height: 145px;
+    min-height: 145px;
   
     margin: 0;
-  
-    padding: 12px;
+    padding: 14px 16px;
   
     display: flex;
-    justify-content: center;
+    flex-direction: column;
   
     box-sizing: border-box;
   
@@ -463,65 +492,125 @@
   }
   
   
-  /* INFO */
+  /* =========================================================
+     INFO
+     ========================================================= */
   
-  .homepage .new-products-frame .product-detail .info {
+  .homepage .new-products-frame .main .product-detail .info {
     width: 100%;
     height: 100%;
   
+    margin: 0;
     padding: 0;
   
     display: flex;
     flex-direction: column;
   
-    justify-content: space-between;
+    box-sizing: border-box;
   }
   
   
-  /* TITLE / PRICE ROW */
+  /* =========================================================
+     TITLE
+     ========================================================= */
   
-  .homepage .new-products-frame .product-detail .info > .MuiStack-root:first-child {
+  .homepage .new-products-frame .main
+    .product-detail .title {
     width: 100%;
-  
-    display: flex;
-    flex-direction: row;
-  
-    align-items: center;
-  }
-  
-  
-  /* TITLE */
-  
-  .homepage .new-products-frame .product-detail .title {
-    width: auto;
-    max-width: 145px;
+    max-width: 100%;
   
     margin: 0;
+    padding: 0;
   
     font-family: "Poppins", sans-serif;
   
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 600;
+  
+    line-height: 22px;
   
     color: #343434;
   
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  
+    box-sizing: border-box;
   }
   
   
-  /* PRICE */
+  /* =========================================================
+     DESCRIPTION
+     ========================================================= */
   
-  .homepage .new-products-frame .product-detail .price {
-    margin-left: 8px;
+  /*
+     If your New Arrivals JSX has a description,
+     this makes it match Popular Books.
+  */
   
-    width: auto;
+  .homepage .new-products-frame .main
+    .product-detail .description {
+    width: 100%;
+  
+    margin: 6px 0 0;
+    padding: 0;
   
     font-family: "Poppins", sans-serif;
   
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: 400;
+  
+    line-height: 18px;
+  
+    color: #77716a;
+  
+    display: -webkit-box;
+  
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  
+    overflow: hidden;
+  
+    box-sizing: border-box;
+  }
+  
+  
+  /* =========================================================
+     BOTTOM AREA
+     ========================================================= */
+  
+  .homepage .new-products-frame .main
+    .product-detail .bottom {
+    width: 100%;
+  
+    margin-top: auto;
+  
+    padding: 0;
+  
+    display: flex;
+  
+    justify-content: space-between;
+    align-items: center;
+  
+    box-sizing: border-box;
+  }
+  
+  
+  /* =========================================================
+     PRICE
+     ========================================================= */
+  
+  .homepage .new-products-frame .main
+    .product-detail .price {
+    margin: 0;
+    padding: 0;
+  
+    font-family: "Poppins", sans-serif;
+  
+    font-size: 16px;
     font-weight: 600;
+  
+    line-height: 22px;
   
     color: #9b743e;
   
@@ -529,20 +618,15 @@
   }
   
   
-  /* DIVIDER */
+  /* =========================================================
+     VIEWS
+     ========================================================= */
   
-  .homepage .new-products-frame .product-detail .divider {
-    margin: 0 8px;
+  .homepage .new-products-frame .main
+    .product-detail .views {
+    margin: 0;
+    padding: 0;
   
-    width: 1px;
-  
-    background-color: #ddd4c7;
-  }
-  
-  
-  /* VIEWS */
-  
-  .homepage .new-products-frame .product-detail .views {
     display: flex;
     align-items: center;
   
@@ -551,7 +635,22 @@
     font-size: 12px;
     font-weight: 500;
   
+    line-height: 18px;
+  
     color: #77716a;
+  
+    white-space: nowrap;
+  }
+  
+  
+  /* =========================================================
+     REMOVE UNNECESSARY MUI SPACING
+     ========================================================= */
+  
+  .homepage .new-products-frame .main .card
+    .MuiCardContent-root {
+    margin: 0;
+    padding: 0;
   }
   
   
@@ -574,8 +673,6 @@
   
     color: #9b743e;
   }
-  
-  
   /* =========================================================
      BOOKSTORE PROMOTION / VIDEO
      ========================================================= */

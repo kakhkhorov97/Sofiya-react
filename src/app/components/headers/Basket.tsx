@@ -8,9 +8,9 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/serach";
 import { Messages, serverApi } from "../../../lib/config";
-import { sweetErrorHandling } from "../../../lib/sweetAlert";
 import { useGlobals } from "../../hooks/useGlobals";
 import OrderService from "../../services/OrderService";
+import { sweetErrorHandling } from "../../../lib/ToastHandling";
 
 interface BasketProps {
   cartItems: CartItem[];
@@ -21,7 +21,7 @@ interface BasketProps {
 }
 
 export default function Basket(props: BasketProps) {
-  const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = props;
+  const { cartItems, onAdd, onRemove, onDelete } = props;
 
   const { authMember, setOrderBuilder } = useGlobals();
   const history = useHistory();
@@ -72,7 +72,7 @@ export default function Basket(props: BasketProps) {
         onClick={handleClick}
       >
         <Badge badgeContent={cartItems.length} color="secondary">
-          <img src={"/icons/shopping-cart.svg"} />
+          <img src={"/icons/shopping-cart.svg"} alt="Shopping-cart" />
         </Badge>
       </IconButton>
       <Menu
@@ -132,7 +132,7 @@ export default function Basket(props: BasketProps) {
                       />
                     </div>
 
-                    <img src={imagePath} className={"product-img"} />
+                    <img src={imagePath} className={"product-img"} alt="img" />
 
                     <span className={"product-name"}>{item.name}</span>
 

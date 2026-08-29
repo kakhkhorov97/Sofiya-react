@@ -10,10 +10,10 @@ import { Messages, serverApi } from "../../../lib/config";
 import { Order, orderItem, OrderUpdateInput } from "../../../lib/types/order";
 import { Product } from "../../../lib/types/product";
 import { T } from "../../../lib/types/common";
-import { sweetErrorHandling } from "../../../lib/sweetAlert";
 import { OrderStatus } from "../../../lib/enums/order.enum";
 import { useGlobals } from "../../hooks/useGlobals";
 import OrderService from "../../services/OrderService";
+import { sweetErrorHandling } from "../../../lib/ToastHandling";
 
 /** REDUX & SELECTOR */
 const pausedOrdersRetriever = createSelector(

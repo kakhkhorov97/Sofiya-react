@@ -53,7 +53,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
             <NavLink to="/">
               <img
                 className="brand-logo"
-                src="/icons/sofiya.svg"
+                src="/icons/Sofiya-main.png"
                 alt="Sofiya"
               />
             </NavLink>
@@ -62,7 +62,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
           {/* NAVIGATION */}
           <Stack className="links">
             <Box className={"hover-line"}>
-              <NavLink to="/" activeClassName={"underline"}>
+              <NavLink exact to="/" activeClassName={"underline"}>
                 Home
               </NavLink>
             </Box>

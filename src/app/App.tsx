@@ -13,14 +13,14 @@ import "../css/navbar.css";
 import "../css/footer.css";
 import useBasket from "./hooks/useBasket";
 import AuthenticationModal from "./components/auth";
-import { T } from "../lib/types/common";
-import {
-  sweetErrorHandling,
-  sweetTopSmallSuccessAlert,
-} from "../lib/sweetAlert";
 import { Messages } from "../lib/config";
 import MemberService from "./services/MemberService";
 import { useGlobals } from "./hooks/useGlobals";
+import { Toaster } from "sonner";
+import {
+  sweetErrorHandling,
+  sweetTopSmallSuccessAlert,
+} from "../lib/ToastHandling";
 
 function App() {
   const location = useLocation();
@@ -44,7 +44,7 @@ function App() {
       const member = new MemberService();
       await member.logout();
 
-      await sweetTopSmallSuccessAlert("success", 8000);
+      sweetTopSmallSuccessAlert("Logout successful!", 2000);
 
       setAuthMember(null);
     } catch (err) {
@@ -55,6 +55,8 @@ function App() {
 
   return (
     <>
+      <Toaster position="top-center" richColors closeButton />
+
       {location.pathname === "/" ? (
         <HomeNavbar
           cartItems={cartItems}
