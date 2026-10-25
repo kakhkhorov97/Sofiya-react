@@ -1,3 +1,5 @@
+> **Sofiya is being rebuilt.** The new version (Next.js + NestJS, with an AI book concierge) lives on the [`v2` branch of Sofiya-Bookstore](https://github.com/kakhkhorov97/Sofiya-Bookstore/tree/v2). This repository keeps the original React frontend.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux] and [Redux Toolkit] TS template.
